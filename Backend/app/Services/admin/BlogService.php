@@ -1,5 +1,5 @@
 <?php
-namespace App\Services;
+namespace App\Services\admin;
 
 use App\Http\Requests\BlogRequest;
 use App\Models\Blogs;
