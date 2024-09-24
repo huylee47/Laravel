@@ -1,9 +1,9 @@
 <?php
-namespace App\Services;
+namespace App\Services\admin;
 use App\Models\Accounts;
 use App\Http\Requests\AccountRequest;
 
-class Accountservice{
+class AccountService{
     public function getAllAccount(){
         $Accounts = Accounts::all();
         return $Accounts;
@@ -16,7 +16,7 @@ class Accountservice{
         Accounts::create([
             'username' =>$request->username,
             'password' =>bcrypt($request->password),
-            'role' => $request->role,
+            'role' => 1,
         ]);
     }
     public function updateAccount($id,AccountRequest $request){

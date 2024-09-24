@@ -23,7 +23,7 @@ class AccountRequest extends FormRequest
     {
         return [
             'username' => ['required','max:191'],
-            'password' => ['required','string','min:8','confirmed'],
+            'password' => ['required','string',],
         ];
     }
 }
