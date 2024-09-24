@@ -5,28 +5,28 @@ use App\Http\Requests\BlogRequest;
 use App\Models\Blogs;
 
 class Blogservice{
-    public function index(){
+    public function getAllBlogs(){
         $blogs = Blogs::all();
         return $blogs;
     }
-    public function getblogId($id){
+    public function getBlogId($id){
         return Blogs::where('id',$id)->first();
     }
-    public function createblog(BlogRequest $request){
+    public function createBlog(BlogRequest $request){
         Blogs::create([
             'title' =>$request->title,
             'content' =>$request->content,
             'author' =>$request->author,
         ]);
     }
-    public function updateblog($id,BlogRequest $request){
+    public function updateBlog($id,BlogRequest $request){
         $blog = Blogs::find($id);
         $blog->title =$request->title;
         $blog->content = $request->content;
         $blog->author = $request->author;
         $blog->save();
     }
-    public function deleteblog($id){
+    public function deleteBlog($id){
         $blog = Blogs::find($id);
         $blog->delete();
     }

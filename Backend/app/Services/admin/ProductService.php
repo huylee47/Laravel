@@ -5,7 +5,7 @@ use App\Http\Requests\ProductRequest;
 use App\Models\Products;
 
 class ProductService{
-    public function index(){
+    public function getAllProducts(){
         $product = Products::all();
         return $product;
     }
