@@ -6,13 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Product extends Model
+class Accounts extends Model
 {
-    protected $table = 'product';
+    protected $table = 'accounts';
     use SoftDeletes;
      protected $fillable = [
-        'product_id',
-        'name',
-        'price',
+        'account_id',
+        'username',
+        'password',
+        'role',
+
      ];
 }

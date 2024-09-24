@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Account;
-use App\Models\Blog;
-use App\Models\Product;
-use App\Models\User;
+use App\Models\Accounts;
+use App\Models\Blogs;
+use App\Models\Products;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -19,22 +18,22 @@ class DatabaseSeeder extends Seeder
         $jsonFilePath = "./database/seeders/data.json";
         $jsonContent = file_get_contents($jsonFilePath);
         $dataArray = json_decode($jsonContent, true);
-        foreach($dataArray['account'] as $row){
-            Account::create([
+        foreach($dataArray['accounts'] as $row){
+            Accounts::create([
                 "username" => $row["username"],
                 "password"=> $row["password"],
                 "role" => $row["role"],
 
             ]);
         }
-        foreach($dataArray['product'] as $row){
-            Product::create([
+        foreach($dataArray['products'] as $row){
+            Products::create([
                 "name" => $row["name"],
                 "price"=> $row["price"]
             ]);
         }
-        foreach($dataArray['blog'] as $row){
-            Blog::create([
+        foreach($dataArray['blogs'] as $row){
+            Blogs::create([
                 "title" => $row["title"],
                 "content"=> $row["content"],
                 "author"=> $row["author"]

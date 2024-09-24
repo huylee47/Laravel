@@ -6,15 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Account extends Model
+class Blogs extends Model
 {
-    protected $table = 'account';
+    protected $table = 'blogs';
     use SoftDeletes;
      protected $fillable = [
-        'account_id',
-        'username',
-        'password',
-        'role',
-
+        'blog_id',
+        'title',
+        'content',
+        'author'
+        
      ];
 }

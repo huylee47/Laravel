@@ -1,5 +1,5 @@
 {
-    "account": [
+    "accounts": [
         {
             "username": "admin",
             "password": "123",
@@ -21,7 +21,7 @@
             "updated_at": "002024-09-21 09:51:54"
         }
     ],
-    "blog": [
+    "blogs": [
         {
             "title": "First Blog Post",
             "content": "This is the content of the first blog post",
@@ -38,7 +38,7 @@
             "author": "user2"
         }
     ],
-    "product": [
+    "products": [
         {
             "name": "Product 1",
             "price": 100
