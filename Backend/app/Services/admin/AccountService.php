@@ -1,27 +1,29 @@
 <?php
 namespace App\Services;
 use App\Models\Accounts;
+use App\Http\Requests\AccountRequest;
 
-class AccountService{
-    public function index(){
-        $accounts = Accounts::all();
-        return $accounts;
+class Accountservice{
+    public function getAllAccount(){
+        $Accounts = Accounts::all();
+        return $Accounts;
     }
     public function getAccountId($id){
         return Accounts::where('id',$id)->first();
     }
-    public function createAccount($username,$password,$role){
+    public function createAccount(AccountRequest $request){
+
         Accounts::create([
-            'username' => $username,
-            'password' => $password,
-            'role' => $role,
+            'username' =>$request->username,
+            'password' =>bcrypt($request->password),
+            'role' => $request->role,
         ]);
     }
-    public function updateAccount($id,$username,$password,$role){
+    public function updateAccount($id,AccountRequest $request){
         $account = Accounts::find($id);
-        $account->username = $username;
-        $account->password = $password;
-        $account->role = $role;
+        $account->username = $request->validated()['username'];
+        $account->password = bcrypt($request->validated()['password']); 
+        $account->role = $request->input('role');
         $account->save();
     }
     public function deleteAccount($id){
