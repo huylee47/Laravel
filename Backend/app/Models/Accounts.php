@@ -15,6 +15,5 @@ class Accounts extends Model
         'username',
         'password',
         'role',
-
      ];
 }

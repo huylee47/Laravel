@@ -1,5 +1,7 @@
 <?php
 namespace App\Services;
+
+use App\Http\Requests\BlogRequest;
 use App\Models\Blogs;
 
 class Blogservice{
@@ -10,18 +12,18 @@ class Blogservice{
     public function getblogId($id){
         return Blogs::where('id',$id)->first();
     }
-    public function createblog($title,$content,$author){
+    public function createblog(BlogRequest $request){
         Blogs::create([
-            'title' => $title,
-            'content' => $content,
-            'author' => $author,
+            'title' =>$request->title,
+            'content' =>$request->content,
+            'author' =>$request->author,
         ]);
     }
-    public function updateblog($id,$title,$content,$author){
+    public function updateblog($id,BlogRequest $request){
         $blog = Blogs::find($id);
-        $blog->title = $title;
-        $blog->content = $content;
-        $blog->author = $author;
+        $blog->title =$request->title;
+        $blog->content = $request->content;
+        $blog->author = $request->author;
         $blog->save();
     }
     public function deleteblog($id){

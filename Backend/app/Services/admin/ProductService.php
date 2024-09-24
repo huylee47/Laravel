@@ -1,5 +1,7 @@
 <?php
 namespace App\Services;
+
+use App\Http\Requests\ProductRequest;
 use App\Models\Products;
 
 class ProductService{
@@ -10,20 +12,19 @@ class ProductService{
     public function getProductId($id){
         return Products::where('id',$id)->first();
     }
-    public function createProduct($username,$password,$role){
+    public function createProduct(ProductRequest $request){
         Products::create([
-            'username' => $username,
-            'password' => $password,
-            'role' => $role,
+            'name' => $request->name,
+            'price' => $request->price,
         ]);
     }
-    public function updateProduct($id,$username,$password,$role){
+    public function updateProduct($id,ProductRequest $request){
         $product = Products::find($id);
-        $product->username = $username;
-        $product->password = $password;
-        $product->role = $role;
+        $product->name = $request->name;
+        $product->price = $request->price;
         $product->save();
     }
+    
     public function deleteProduct($id){
         $product = Products::find($id);
         $product->delete();
