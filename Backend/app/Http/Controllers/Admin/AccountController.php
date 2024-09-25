@@ -20,10 +20,10 @@ class AccountController extends Controller
         $accounts = $this->accountService->getAllAccount();
         return view('admin.account.index', compact('accounts'));
     }
-    public function getAccountId($id){
-        $account = $this->accountService->getAccountId($id);
-        return view('admin.account.show', compact('account'));
-    }
+    // public function getAccountId($id){
+    //     $account = $this->accountService->getAccountId($id);
+    //     return view('admin.account.show', compact('account'));
+    // }
     public function createAccountView(){
         return view('admin.account.add');
     }
@@ -36,13 +36,13 @@ class AccountController extends Controller
     }
     public function updateAccount($id, AccountRequest $request){
         $this->accountService->updateAccount($id, $request);
+        return redirect()->route('admin.account.index');
+
+
+        
     }
     public function deleteAccount($id){
         $this->accountService->deleteAccount($id);
-    }
-    public function changeRole($id){
-        $accounts = $this->accountService->getAllAccount();
-        $this->accountService->changeRole($id);
-        return view('admin.account.index', compact('accounts'));
+        return redirect()->route('admin.account.index');
     }
 }
