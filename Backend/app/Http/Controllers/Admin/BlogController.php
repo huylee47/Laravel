@@ -22,15 +22,28 @@ class BlogController extends Controller
     }
     public function getBlogId($id){
         $Blog = $this->BlogService->getblogId($id);
-        return view('admin.Blog.show', compact('Blog'));
+        return view('admin.blog.edit', compact('Blog'));
+    }
+    public function createBlogView(){
+        return view('admin.blog.add');
     }
     public function createBlog(BlogRequest $request){
         $this->BlogService->createBlog($request);
+        return redirect()->route('admin.Blog.index');
+    }
+    public function updateBlogView($id){
+        $Blog = $this->BlogService->getblogId($id);
+        return view('admin.blog.edit', compact('Blog'));
     }
     public function updateBlog($id, BlogRequest $request){
         $this->BlogService->updateBlog($id, $request);
+        return redirect()->route('admin.Blog.index');
+
+
     }
     public function deleteBlog($id){
         $this->BlogService->deleteBlog($id);
+        return redirect()->route('admin.Blog.index');
+
     }
 }
