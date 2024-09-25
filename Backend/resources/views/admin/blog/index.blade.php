@@ -6,9 +6,9 @@
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Username</th>
-            <th scope="col">Password</th>
-            <th scope="col">Role</th>
+            <th scope="col">Title</th>
+            <th scope="col">Content</th>
+            <th scope="col">Author</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
