@@ -11,37 +11,39 @@ class AccountController extends Controller
 {
 
     private $accountService;
-    
+
     public function __construct(AccountService $accountService)
     {
         $this->accountService = $accountService;
     }
-    public function indexAccount(){
+    public function indexAccount()
+    {
         $accounts = $this->accountService->getAllAccount();
-        return view('admin.account.index', compact('accounts'));
+        return $accounts;
     }
-    // public function getAccountId($id){
-    //     $account = $this->accountService->getAccountId($id);
-    //     return view('admin.account.show', compact('account'));
-    // }
-    public function createAccountView(){
+    public function createAccountView()
+    {
         return view('admin.account.add');
     }
-    public function createAccount(AccountRequest $request){
-        $this->accountService->createAccount($request);  
+    public function createAccount(AccountRequest $request)
+    {
+        $this->accountService->createAccount($request);
     }
-    public function updateAccountView($id){
+    public function updateAccountView($id)
+    {
         $account = $this->accountService->getAccountId($id);
         return view('admin.account.edit', compact('account'));
     }
-    public function updateAccount($id, AccountRequest $request){
+    public function updateAccount($id, AccountRequest $request)
+    {
         $this->accountService->updateAccount($id, $request);
         return redirect()->route('admin.account.index');
 
 
-        
+
     }
-    public function deleteAccount($id){
+    public function deleteAccount($id)
+    {
         $this->accountService->deleteAccount($id);
         return redirect()->route('admin.account.index');
     }
