@@ -7,7 +7,7 @@
       <li><router-link to="/roles">Quản lý phân quyền</router-link></li>
       <li><router-link to="/news">Quản lý tin tức</router-link></li>
       <li><router-link to="/products">Quản lý sản phẩm</router-link></li>
-      <li><router-link to="/logout">Đăng xuất</router-link></li>
+      <li><router-link to="">Đăng xuất</router-link></li>
     </ul>
   </div>
 </template>
