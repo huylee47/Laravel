@@ -19,10 +19,10 @@
                 <a class="nav-link active" aria-current="page" href="{{route('admin.Account.index')}}">Account</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Product</a>
+                <a class="nav-link active" aria-current="page" href="{{route('admin.Product.index')}}">Product</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Blog</a>
+                <a class="nav-link active" aria-current="page" href="{{route('admin.Blog.index')}}">Blog</a>
               </li>
             </ul>
             <form class="d-flex">

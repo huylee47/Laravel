@@ -20,9 +20,12 @@
             <td>{{$account->password}}</td>   
             <td>{{ $account->role == 1 ? 'User' : ($account->role == 0 ? 'Admin' : 'Banned') }}</td>
             <td>
+              <a href="{{ route('admin.Account.editView', ['id' => $account->id]) }}">
                 <button class="btn btn-warning">Edit</button>
+              </a>       
+              <a href="{{ route('admin.Account.delete', ['id' => $account->id]) }}">     
                 <button class="btn btn-danger">Delete</button>
-
+              </a>       
             </td>
           </tr>
           @endforeach

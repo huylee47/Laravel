@@ -23,13 +23,26 @@ class ProductController extends Controller
         $Product = $this->ProductService->getProductId($id);
         return view('admin.Product.show', compact('Product'));
     }
+    public function createProductView(){
+        return view('admin.product.add');
+    }
     public function createProduct(ProductRequest $request){
         $this->ProductService->createProduct($request);
+        return redirect()->route('admin.Product.index');
+
+    }
+    public function updateProductView($id){
+        $Product = $this->ProductService->getProductId($id);
+        return view('admin.product.edit', compact('Product'));
     }
     public function updateProduct($id, ProductRequest $request){
         $this->ProductService->updateProduct($id, $request);
+        return redirect()->route('admin.Product.index');
+
     }
     public function deleteProduct($id){
         $this->ProductService->deleteProduct($id);
+        return redirect()->route('admin.Product.index');
+
     }
 }
