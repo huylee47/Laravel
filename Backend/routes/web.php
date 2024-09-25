@@ -14,7 +14,7 @@ Route::get('/', function () {
 Route::prefix('/Admin')->group(function () {
     Route::prefix('/Account')->group(function () {
         Route::get('/list',[AccountController::class,'indexAccount'])->name('admin.Account.index');
-        Route::get('/Create',[AccountController::class,'createAccountView'])->name('admin.Account.add');
+        // Route::get('/Create',[AccountController::class,'createAccountView'])->name('admin.Account.add');
         Route::post('/CreateAcc',[AccountController::class,'createAccount'])->name('admin.Account.create');
         // Route::get('/Info/{id}',[AccountController::class,'getAccountId'])->name('admin.Account.show');
         Route::get('/Edit/{id}',[AccountController::class,'updateAccountView'])->name('admin.Account.editView');
@@ -23,7 +23,7 @@ Route::prefix('/Admin')->group(function () {
     });
     Route::prefix('/Product')->group(function () {
         Route::get('/list',[ProductController::class,'indexProduct'])->name('admin.Product.index');
-        Route::get('/Create',[ProductController::class,'createProductView'])->name('admin.Product.add');
+        // Route::get('/Create',[ProductController::class,'createProductView'])->name('admin.Product.add');
         Route::post('/CreateProduct',[ProductController::class,'createProduct'])->name('admin.Product.create');
         // Route::get('/Info/{id}',[ProductController::class,''])->name('admin.Product.show');
         Route::get('/Edit/{id}',[ProductController::class,'updateProductView'])->name('admin.Product.editView');
@@ -33,7 +33,7 @@ Route::prefix('/Admin')->group(function () {
     
     Route::prefix('/Blog')->group(function () {
         Route::get('/list',[BlogController::class,'indexBlog'])->name('admin.Blog.index');
-        Route::get('/Create',[BlogController::class,'createBlogView'])->name('admin.Blog.add');
+        // Route::get('/Create',[BlogController::class,'createBlogView'])->name('admin.Blog.add');
         Route::post('/CreateBlog',[BlogController::class,'createBlog'])->name('admin.Blog.create');
         // Route::get('/Info/{id}',[BlogController::class,''])->name('admin.Blog.show');
         Route::get('/Edit/{id}',[BlogController::class,'getBlogId'])->name('admin.Blog.editView');
