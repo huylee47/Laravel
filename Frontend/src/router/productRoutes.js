@@ -1,7 +1,7 @@
 import Products from '../pages/Products.vue';
-import ProductsDataTable from '../components/ProductsDataTable.vue'; // Thêm import cho ProductsDataTable
-import AddProduct from '../components/AddProduct.vue'; // Thêm import cho AddProduct
-import EditProduct from '../components/EditProduct.vue'; // Thêm import cho EditProduct
+import ProductsDataTable from '../components/ProductsDataTable.vue';
+import AddProduct from '../components/AddProduct.vue';
+import EditProduct from '../components/EditProduct.vue';
 
 const productRoutes = [
     {
