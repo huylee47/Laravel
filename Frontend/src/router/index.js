@@ -1,6 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { isAuthenticated } from '../utils/auth';
-import authRoutes from './authRoutes';
 import userRoutes from './userRoutes';
 import roleRoutes from './roleRoutes';
 import newsRoutes from './newsRoutes';
@@ -9,7 +7,6 @@ import dashboardRoutes from './dashboardRoutes';
 
 const routes = [
     { path: '/', redirect: '/dashboard' },
-    ...authRoutes,
     ...dashboardRoutes,
     ...userRoutes,
     ...roleRoutes,

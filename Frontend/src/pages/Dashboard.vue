@@ -13,8 +13,8 @@
 
 <script>
 import Sidebar from '../components/Sidebar.vue';
-import DashboardDataTable from '../components/DashboardDataTable.vue';
-import NewsDataTable from '../components/NewsDataTable.vue';
+import DashboardDataTable from '../components/DashboardListData.vue';
+import NewsDataTable from '../components/NewListData.vue';
 export default {
   components: {
     Sidebar,
@@ -25,6 +25,5 @@ export default {
 };
 </script>
 <style scoped>
-@import '../assets/css/styles.module.css';
-@import '../assets/css/container.module.css';
+@import '../assets/css/style.module.css';
 </style>

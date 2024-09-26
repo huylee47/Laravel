@@ -18,5 +18,5 @@ export default {
 };
 </script>
 <style scoped>
-@import '../assets/css/sidebar.module.css';
+@import '../assets/css/style.module.css';
 </style>
