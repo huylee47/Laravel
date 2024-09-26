@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { createUser } from '../api/users';
+import { createUser } from '../services/userService.js';
 
 export default {
     name: 'AddUser',
@@ -42,7 +42,5 @@ export default {
 </script>
 
 <style scoped>
-@import '../assets/css/styles.module.css';
-@import '../assets/css/container.module.css';
-@import '../assets/css/input.module.css';
+@import '../assets/css/style.module.css';
 </style>

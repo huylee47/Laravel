@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { fetchAuthById, updateUser } from '../api/users'; // Import your API functions
+import { fetchUserById, updateUser } from '../services/userService.js'; // Import your API functions
 
 export default {
     name: 'EditUser',
@@ -30,7 +30,7 @@ export default {
     methods: {
         async loadUser() {
             try {
-                const user = await fetchAuthById(this.userId); // Fetch current user data by ID
+                const user = await fetchUserById(this.userId); // Fetch current user data by ID
                 this.username = user.username; // Pre-fill username
                 this.password = user.password; // Pre-fill password
             } catch (error) {
@@ -57,7 +57,5 @@ export default {
 </script>
 
 <style scoped>
-@import '../assets/css/styles.module.css';
-@import '../assets/css/container.module.css';
-@import '../assets/css/input.module.css';
+@import '../assets/css/style.module.css';
 </style>

@@ -13,7 +13,7 @@
 
 <script>
 import Sidebar from '../components/Sidebar.vue';
-import ProductsDataTable from '../components/ProductsDataTable.vue';
+import ProductsDataTable from '../components/ProductListData.vue';
 
 export default {
   components: {
@@ -24,6 +24,5 @@ export default {
 </script>
 
 <style scoped>
-@import '../assets/css/styles.module.css';
-@import '../assets/css/container.module.css';
+@import '../assets/css/style.module.css';
 </style>

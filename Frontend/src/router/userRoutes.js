@@ -1,7 +1,7 @@
 import Users from '../pages/Users.vue';
-import UserDataTable from '../components/UserDataTable.vue';
-import AddUser from '../components/AddUser.vue';
-import EditUser from '../components/EditUser.vue';
+import UserListData from '../components/UserListData.vue';
+import UserCreate from '../components/UserCreate.vue';
+import UUserUpdate from '../components/UserUpdate.vue';
 
 const userRoutes = [
     {
@@ -11,18 +11,18 @@ const userRoutes = [
         children: [
             {
                 path: '',
-                name: 'UsersDataTable',
-                component: UserDataTable,
+                name: 'UserListData',
+                component: UserListData,
             },
             {
                 path: 'add',
-                name: 'AddUser',
-                component: AddUser,
+                name: 'UserCreate',
+                component: UserCreate,
             },
             {
                 path: 'edit/:id',
-                name: 'EditUser',
-                component: EditUser,
+                name: 'UserUpdate',
+                component: UUserUpdate,
             },
         ],
     },

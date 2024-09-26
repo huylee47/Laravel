@@ -1,7 +1,7 @@
 import Dashboard from '../pages/Dashboard.vue';
-import DashboardDataTable from '../components/DashboardDataTable.vue';
+import DashboardListData from '../components/DashboardListData.vue';
 import News from '../pages/News.vue';
-import NewsDataTable from '../components/NewsDataTable.vue';
+import NewListData from '../components/NewListData.vue';
 
 const dashboardRoutes = [
     {
@@ -15,8 +15,8 @@ const dashboardRoutes = [
             {
                 path: '',
                 components: {
-                    default: DashboardDataTable,
-                    news: NewsDataTable,
+                    default: DashboardListData,
+                    news: NewListData,
                 }
             }
         ],

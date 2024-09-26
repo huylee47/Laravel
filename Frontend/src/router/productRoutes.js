@@ -1,7 +1,7 @@
 import Products from '../pages/Products.vue';
-import ProductsDataTable from '../components/ProductsDataTable.vue';
-import AddProduct from '../components/AddProduct.vue';
-import EditProduct from '../components/EditProduct.vue';
+import ProductListData from '../components/ProductListData.vue';
+import ProductCreate from '../components/ProductCreate.vue';
+import ProductUpdate from '../components/ProductUpdate.vue';
 
 const productRoutes = [
     {
@@ -11,18 +11,18 @@ const productRoutes = [
         children: [
             {
                 path: '',
-                name: 'ProductsDataTable',
-                component: ProductsDataTable,
+                name: 'ProductListData',
+                component: ProductListData,
             },
             {
                 path: 'add',
-                name: 'AddProduct',
-                component: AddProduct,
+                name: 'ProductCreate',
+                component: ProductCreate,
             },
             {
-                path: 'edit',
-                name: 'EditProduct',
-                component: EditProduct,
+                path: 'edit/:id',
+                name: 'ProductUpdate',
+                component: ProductUpdate,
             },
         ],
     },
