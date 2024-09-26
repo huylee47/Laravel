@@ -5,6 +5,7 @@
   </router-link>
   <table>
     <thead>
+
       <tr>
         <th>ID</th>
         <th>TÊN SẢN PHẨM</th>
@@ -27,6 +28,7 @@
           <button @click="confirmDelete(product.id)">XÓA</button>
         </td>
       </tr>
+
     </tbody>
   </table>
 </template>
@@ -52,6 +54,7 @@ export default {
         this.products = await fetchProducts();
       } catch (error) {
         console.error('Không thể tải sản phẩm:', error);
+
         alert('Không thể tải dữ liệu sản phẩm.');
       } finally {
         this.loading = false;
@@ -63,6 +66,7 @@ export default {
         this.loadProducts();
       } catch (error) {
         console.error('Không thể xóa sản phẩm:', error);
+
         alert('Không thể xóa dữ liệu sản phẩm.');
       }
     },

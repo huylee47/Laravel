@@ -1,5 +1,6 @@
 import Dashboard from '../pages/Dashboard.vue';
 import DashboardListData from '../components/DashboardListData.vue';
+
 import News from '../pages/News.vue';
 import NewListData from '../components/NewListData.vue';
 

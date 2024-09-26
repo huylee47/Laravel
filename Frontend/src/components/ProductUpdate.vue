@@ -15,6 +15,7 @@
 <script>
 import { fetchProductById, updateProduct } from '../services/productService.js';
 
+
 export default {
   name: 'EditProduct',
   data() {
@@ -26,6 +27,7 @@ export default {
   },
   mounted() {
     this.loadProduct();
+
   },
   methods: {
     async loadProduct() {
@@ -36,6 +38,7 @@ export default {
       } catch (error) {
         console.error('Không thể tải sản phẩm:', error);
         alert('Không thể tải dữ liệu sản phẩm.');
+
       }
     },
     async updateProduct() {
@@ -49,6 +52,7 @@ export default {
         this.$router.push('/products');
       } catch (error) {
         console.error('Không thể cập nhật sản phẩm:', error);
+
 
       }
     },
