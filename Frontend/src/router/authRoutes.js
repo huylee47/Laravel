@@ -1,7 +1,11 @@
-import Login from '../pages/Login.vue';
+import Login from '@/components/Login.vue';
 
 const authRoutes = [
-    { path: '/login', component: Login },
+    {
+        path: '/login',
+        name: 'Login',
+        component: Login
+    }
 ];
 
 export default authRoutes;

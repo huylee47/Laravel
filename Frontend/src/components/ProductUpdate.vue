@@ -13,7 +13,8 @@
 </template>
 
 <script>
-import { fetchProductById, updateProduct } from '../services/productService.js'; // Import your API functions
+import { fetchProductById, updateProduct } from '../services/productService.js';
+
 
 export default {
   name: 'EditProduct',
@@ -21,21 +22,23 @@ export default {
     return {
       name: '',
       price: '',
-      productId: this.$route.params.id, // Get the ID from the route params
+      productId: this.$route.params.id,
     };
   },
   mounted() {
-    this.loadProduct(); // Load product data when the component is mounted
+    this.loadProduct();
+
   },
   methods: {
     async loadProduct() {
       try {
-        const product = await fetchProductById(this.productId); // Fetch current product data by ID
-        this.name = product.name; // Pre-fill name
-        this.price = product.price; // Pre-fill price
+        const product = await fetchProductById(this.productId);
+        this.name = product.name;
+        this.price = product.price;
       } catch (error) {
-        console.error('Failed to load product:', error);
-        // You can handle the error here, like showing an alert or a message
+        console.error('Không thể tải sản phẩm:', error);
+        alert('Không thể tải dữ liệu sản phẩm.');
+
       }
     },
     async updateProduct() {
@@ -45,11 +48,12 @@ export default {
       };
 
       try {
-        await updateProduct(this.productId, productData); // Call the API to update the product
-        this.$router.push('/products'); // Redirect to products list after successful update
+        await updateProduct(this.productId, productData);
+        this.$router.push('/products');
       } catch (error) {
-        console.error('Failed to update product:', error);
-        // Handle the error appropriately (e.g., notify the user)
+        console.error('Không thể cập nhật sản phẩm:', error);
+
+
       }
     },
   },

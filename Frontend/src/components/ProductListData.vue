@@ -5,28 +5,30 @@
   </router-link>
   <table>
     <thead>
-    <tr>
-      <th>ID</th>
-      <th>TÊN SẢN PHẨM</th>
-      <th>GIÁ</th>
-      <th>THAO TÁC</th>
-    </tr>
+
+      <tr>
+        <th>ID</th>
+        <th>TÊN SẢN PHẨM</th>
+        <th>GIÁ</th>
+        <th>THAO TÁC</th>
+      </tr>
     </thead>
     <tbody>
-    <tr v-if="loading">
-      <td colspan="4">Đang tải...</td>
-    </tr>
-    <tr v-for="product in products" :key="product.id" v-else>
-      <td>{{ product.id }}</td>
-      <td>{{ product.name }}</td>
-      <td>{{ product.price }}</td>
-      <td>
-        <router-link :to="`/products/edit/${product.id}`">
-          <button>SỬA</button>
-        </router-link>
-        <button @click="confirmDelete(product.id)">XÓA</button>
-      </td>
-    </tr>
+      <tr v-if="loading">
+        <td colspan="4">Đang tải...</td>
+      </tr>
+      <tr v-for="product in products" :key="product.id" v-else>
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+        <td>
+          <router-link :to="`/products/edit/${product.id}`">
+            <button>SỬA</button>
+          </router-link>
+          <button @click="confirmDelete(product.id)">XÓA</button>
+        </td>
+      </tr>
+
     </tbody>
   </table>
 </template>
@@ -51,7 +53,8 @@ export default {
       try {
         this.products = await fetchProducts();
       } catch (error) {
-        console.error('Failed to load products:', error);
+        console.error('Không thể tải sản phẩm:', error);
+
         alert('Không thể tải dữ liệu sản phẩm.');
       } finally {
         this.loading = false;
@@ -62,12 +65,13 @@ export default {
         await deleteProductService(id);
         this.loadProducts();
       } catch (error) {
-        console.error('Failed to delete product:', error);
+        console.error('Không thể xóa sản phẩm:', error);
+
         alert('Không thể xóa dữ liệu sản phẩm.');
       }
     },
     confirmDelete(id) {
-      if (confirm('Are you sure you want to delete this product?')) {
+      if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này ?')) {
         this.removeProduct(id);
       }
     },
