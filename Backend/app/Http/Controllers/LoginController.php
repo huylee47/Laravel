@@ -15,16 +15,15 @@ class LoginController extends Controller
     {
         $this->LoginService= $LoginService;
     }
-    // public function login(Request $request){
-    //     $loginResult = $this->LoginService->loginAuth($request);
-    //     if (isset($loginResult['success']) && $loginResult['success']) {
-    //         $account = Auth::user();
-    //         $token = $account->createToken('authToken')->plainTextToken; // Tạo token
-    //         return response()->json(['token' => $token, 'role' => $loginResult['role']]);
-    //     }
+    public function login(Request $request) {
+        $loginResult = $this->LoginService->loginAuth($request);
+        
+        if (isset($loginResult['success']) && $loginResult['success']) {
+            return response()->json(['token' => $loginResult['token'], 'role' => $loginResult['role']]);
+        }
     
-    //     return response()->json($loginResult); // Trả về kết quả
-    //     // return response()->json($loginResult);
-    // }
+        return response()->json($loginResult, 401); // Trả về kết quả lỗi
+    }
+    
     }
 
