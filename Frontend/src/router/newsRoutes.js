@@ -1,5 +1,5 @@
 import News from '../pages/News.vue';
-import newsDataTable from '../components/NewsDataTable.vue';
+import newsDataTable from '../components/NewListData.vue';
 
 const newsRoutes = [
     {
