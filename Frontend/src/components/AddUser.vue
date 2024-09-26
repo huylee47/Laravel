@@ -2,17 +2,8 @@
     <h1>Thêm mới nhân viên</h1>
     <form @submit.prevent="createAccount" class="form-container">
         <div class="input">
-            <input type="file" @change="onFileChange" id="photo" required>
             <input type="text" v-model="username" id="username" required placeholder="USERNAME">
-            <input type="text" v-model="password" id="password" required placeholder="PASSWORD">
-            <input type="text" v-model="cccd" id="cccd" required placeholder="CCCD">
-            <input type="email" v-model="email" id="email" required placeholder="EMAIL">
-            <input type="file" @change="onFileChange" id="photo" required>
-            <input type="text" v-model="role" id="role" required placeholder="VAI TRÒ">
-            <select v-model="status" id="status" required>
-                <option value="active">Hoạt động</option>
-                <option value="inactive">Không hoạt động</option>
-            </select>
+            <input type="password" v-model="password" id="password" required placeholder="PASSWORD">
         </div>
         <button type="submit">LƯU</button>
         <router-link to="/users">
@@ -20,9 +11,36 @@
         </router-link>
     </form>
 </template>
-<script>
 
+<script>
+import { createUser } from '../api/users';
+
+export default {
+    name: 'AddUser',
+    data() {
+        return {
+            username: '',
+            password: '',
+        };
+    },
+    methods: {
+        async createAccount() {
+            const userData = {
+                username: this.username,
+                password: this.password,
+            };
+
+            try {
+                await createUser(userData);
+                this.$router.push('/users');
+            } catch (error) {
+                console.error('Failed to create account:', error);
+            }
+        },
+    },
+};
 </script>
+
 <style scoped>
 @import '../assets/css/styles.module.css';
 @import '../assets/css/container.module.css';

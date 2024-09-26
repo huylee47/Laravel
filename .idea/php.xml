@@ -115,6 +115,11 @@
       <path value="$PROJECT_DIR$/Backend/vendor/laravel/tinker" />
       <path value="$PROJECT_DIR$/Backend/vendor/laravel/prompts" />
       <path value="$PROJECT_DIR$/Backend/vendor/laravel/sail" />
+      <path value="$PROJECT_DIR$/Backend/vendor/swagger-api/swagger-ui" />
+      <path value="$PROJECT_DIR$/Backend/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/Backend/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/Backend/vendor/darkaonline/l5-swagger" />
+      <path value="$PROJECT_DIR$/Backend/vendor/zircote/swagger-php" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />

@@ -20,7 +20,7 @@ const userRoutes = [
                 component: AddUser,
             },
             {
-                path: 'edit',
+                path: 'edit/:id',
                 name: 'EditUser',
                 component: EditUser,
             },
