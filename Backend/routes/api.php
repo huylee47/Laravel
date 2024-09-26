@@ -48,7 +48,8 @@ Route::get('/', function () {
 //         Route::delete('/{id}', [BlogController::class, 'deleteBlog'])->name('admin.Blog.delete');
 //     });
 // });
-Route::prefix('/Admin')->middleware(['auth:sanctum', 'role:0'])->group(function () {
+
+Route::prefix('/Admin')->middleware(['auth:sanctum', 'abilities:admin'])->group(function () {
     Route::prefix('/Account')->group(function () {
         Route::get('/list', [AccountController::class, 'indexAccount'])->name('admin.Account.index');
         Route::post('/CreateAcc', [AccountController::class, 'createAccount'])->name('admin.Account.create');
@@ -56,7 +57,7 @@ Route::prefix('/Admin')->middleware(['auth:sanctum', 'role:0'])->group(function 
         Route::post('/EditAcc/{id}', [AccountController::class, 'updateAccount'])->name('admin.Account.edit');
         Route::get('/Delete/{id}', [AccountController::class, 'deleteAccount'])->name('admin.Account.delete');
     });
-    
+
     Route::prefix('/Product')->group(function () {
         Route::get('/list', [ProductController::class, 'indexProduct'])->name('admin.Product.index');
         Route::post('/CreateProduct', [ProductController::class, 'createProduct'])->name('admin.Product.create');
@@ -64,7 +65,7 @@ Route::prefix('/Admin')->middleware(['auth:sanctum', 'role:0'])->group(function 
         Route::post('/EditProduct/{id}', [ProductController::class, 'updateProduct'])->name('admin.Product.edit');
         Route::get('/Delete/{id}', [ProductController::class, 'deleteProduct'])->name('admin.Product.delete');
     });
-    
+
     Route::prefix('/Blog')->group(function () {
         Route::get('/list', [BlogController::class, 'indexBlog'])->name('admin.Blog.index');
         Route::post('/CreateBlog', [BlogController::class, 'createBlog'])->name('admin.Blog.create');
@@ -73,7 +74,7 @@ Route::prefix('/Admin')->middleware(['auth:sanctum', 'role:0'])->group(function 
         Route::get('/Delete/{id}', [BlogController::class, 'deleteBlog'])->name('admin.Blog.delete');
     });
 });
-Route::prefix('User')->middleware(['auth:sanctum', 'role:1'])->group(function() {
+Route::prefix('User')->middleware(['auth:sanctum', 'role:admin'])->group(function() {
     Route::prefix('/Blog')->group(function () {
         Route::get('/list', [BlogController::class, 'indexBlog'])->name('user.Blog.index');
         Route::post('/Create', [BlogController::class, 'createBlog'])->name('user.Blog.create');
@@ -82,4 +83,4 @@ Route::prefix('User')->middleware(['auth:sanctum', 'role:1'])->group(function() 
         Route::delete('/{id}', [BlogController::class, 'deleteBlog'])->name('user.Blog.delete');
     });
 });
-    
+
