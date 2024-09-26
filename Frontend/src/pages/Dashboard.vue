@@ -5,38 +5,23 @@
       <header>
         <h1><i class="fas fa-home"></i> Tổng quan</h1>
       </header>
-      <section class="cards">
-        <div class="card">
-          <h3>Số lượng người dùng</h3>
-          <p>{{ userCount }}</p>
-        </div>
-        <div class="card">
-          <h3>Số lượng sản phẩm</h3>
-          <p>{{ productCount }}</p>
-        </div>
-        <div class="card">
-          <h3>Số lượng tin tức</h3>
-          <p>{{ newsCount }}</p>
-        </div>
-      </section>
+      <DashboardDataTable />
+      <NewsDataTable />
     </main>
   </div>
 </template>
 
 <script>
 import Sidebar from '../components/Sidebar.vue';
-
+import DashboardDataTable from '../components/DashboardDataTable.vue';
+import NewsDataTable from '../components/NewsDataTable.vue';
 export default {
   components: {
     Sidebar,
+    DashboardDataTable,
+    NewsDataTable,
   },
-  data() {
-    return {
-      userCount: 150,
-      productCount: 80,
-      newsCount: 25,
-    };
-  },
+
 };
 </script>
 <style scoped>

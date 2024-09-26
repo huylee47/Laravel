@@ -16,7 +16,7 @@ const userRoutes = [
             },
             {
                 path: 'add',
-                name: 'AddAccount',
+                name: 'AddUser',
                 component: AddUser,
             },
             {
