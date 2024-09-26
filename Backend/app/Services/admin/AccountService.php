@@ -13,11 +13,12 @@ class AccountService{
     }
     public function createAccount(AccountRequest $request){
 
-        Accounts::create([
+        $newAccount = Accounts::create([
             'username' =>$request->username,
             'password' =>bcrypt($request->password),
             'role' => 1,
         ]);
+        return $newAccount;
     }
     public function updateAccount($id,AccountRequest $request){
         $account = Accounts::find($id);
@@ -25,15 +26,17 @@ class AccountService{
         $account->password = bcrypt($request->validated()['password']); 
         $account->role = $request->input('role');
         $account->save();
+        return $account;
     }
     public function deleteAccount($id){
         $account = Accounts::find($id);
         $account->delete();
     }
-    public function changeRole($id){
-        $account = Accounts::find($id);
-        $account->role = ($account->role == 1) ? 2 : $account->role;
-        $account->save();
-    }
+    // public function changeRole($id){
+    //     $account = Accounts::find($id);
+    //     $account->role = ($account->role == 1) ? 2 : $account->role;
+    //     $account->save();
+    //     return $account;
+    // }
 }
 ?>

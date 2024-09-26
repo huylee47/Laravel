@@ -21,74 +21,77 @@ class AccountController extends Controller
     public function indexAccount()
     {
         $accounts = $this->accountService->getAllAccount();
-        return response()->json($accounts);  // Trả về JSON
+        return response()->json($accounts);  
     }
 
     // Tạo tài khoản mới
     public function createAccount(AccountRequest $request)
     {
-        $this->accountService->createAccount($request);
+        $newAccount =  $this->accountService->createAccount($request);
         return response()->json([
-            'message' => 'Tài khoản đã được tạo thành công!'
-        ], 201);  // Trả về JSON với mã 201 (Created)
+            'status' => 'success',
+            'account' => $newAccount
+        ], 201);  
     }
 
-    // Thêm tài khoản mới từ request thông thường (trường hợp cần thiết)
-    public function store(Request $request)
-    {
-        $account = new Accounts([
-            'username' => $request->get('username'),
-            'password' => bcrypt($request->get('password')),
-        ]);
-        $account->save();
+    // public function store(Request $request)
+    // {
+    //     $account = new Accounts([
+    //         'username' => $request->get('username'),
+    //         'status' => 'success',
+    //         'password' => bcrypt($request->get('password')),
+    //     ]);
+    //     $account->save();
 
-        return response()->json([
-            'message' => 'Tài khoản đã được lưu thành công!',
-            'account' => $account
-        ], 201);  // Trả về JSON với mã 201
-    }
+    //     return response()->json([
+    //         'status' => 'success',
+    //         'account' => $account
+    //     ], 201);  
+    // }
 
-    // Hiển thị form chỉnh sửa tài khoản (Nếu không cần, có thể bỏ)
     public function getProductId($id)
     {
         $account = $this->accountService->getAccountId($id);
 
         if (!$account) {
-            return response()->json(['error' => 'Tài khoản không tồn tại'], 404);
+            return response()->json([
+                'status' => 'Account not found',
+            ], 404);
         }
-
-        return response()->json($account);  // Trả về JSON
+        return response()->json($account);  
     }
 
-    // Cập nhật tài khoản
     public function updateAccount($id, AccountRequest $request)
     {
         $account = $this->accountService->getAccountId($id);
 
         if (!$account) {
-            return response()->json(['error' => 'Tài khoản không tồn tại'], 404);
+            return response()->json([
+                'status' => 'Account not found',
+        ], 404);
         }
 
         $this->accountService->updateAccount($id, $request);
 
         return response()->json([
-            'message' => 'Tài khoản đã được cập nhật thành công!'
+            'status' => 'success',
+            'updatedAccount' => $account
         ]);
     }
 
-    // Xóa tài khoản
     public function deleteAccount($id)
     {
+        // $accountCurrent = $this->accountService->getAccountId($id);
         $account = $this->accountService->getAccountId($id);
-
         if (!$account) {
-            return response()->json(['error' => 'Tài khoản không tồn tại'], 404);
+            return response()->json(['error' => 'Account not found'], 404);
         }
-
-        $this->accountService->deleteAccount($id);
-
-        return response()->json([
-            'message' => 'Tài khoản đã được xóa thành công!'
+           $this->accountService->deleteAccount($id);
+            return response()->json([
+            'status' => 'success',
+            'deletedAccount' => $account
         ]);
+        
+
     }
 }
