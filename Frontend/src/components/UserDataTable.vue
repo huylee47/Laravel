@@ -18,16 +18,18 @@
                 <td>{{ auth.username }}</td>
                 <td>{{ auth.password }}</td>
                 <td>
-                    <!-- <button @click="editAuth(auth.id)">Edit</button> -->
-                    <router-link to="/users/edit"><button>SỬA</button></router-link>
-                    <button @click="deleteAuth(auth.id)">XÓA</button>
+                    <router-link :to="`/users/edit/${auth.id}`">
+                        <button>SỬA</button>
+                    </router-link>
+                    <button @click="confirmDelete(auth.id)">XÓA</button>
                 </td>
             </tr>
         </tbody>
     </table>
 </template>
+
 <script>
-import { fetchAuths, editAuth, deleteAuth } from '../api/users';
+import { fetchAuths, deleteAuth } from '../api/users';
 
 export default {
     name: 'AccountDataTable',
@@ -47,11 +49,23 @@ export default {
                 console.error('Failed to load auths:', error);
             }
         },
-        editAuth,
-        deleteAuth,
+        async deleteAuth(id) {
+            try {
+                await deleteAuth(id);
+                this.loadAuths(); // Refresh the list after deletion
+            } catch (error) {
+                console.error('Failed to delete auth:', error);
+            }
+        },
+        confirmDelete(id) {
+            if (confirm('Are you sure you want to delete this user?')) {
+                this.deleteAuth(id);
+            }
+        },
     },
 };
 </script>
+
 <style scoped>
 @import '../assets/css/styles.module.css';
 @import '../assets/css/container.module.css';
