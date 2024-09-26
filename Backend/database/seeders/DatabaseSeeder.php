@@ -7,6 +7,7 @@ use App\Models\Blogs;
 use App\Models\Products;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,7 +22,7 @@ class DatabaseSeeder extends Seeder
         foreach($dataArray['accounts'] as $row){
             Accounts::create([
                 "username" => $row["username"],
-                "password"=> $row["password"],
+                "password"=> Hash::make($row["password"]),
                 "role" => $row["role"],
 
             ]);

@@ -4,9 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Accounts extends Model
+class Accounts extends Authenticatable
 {
+
+   use HasFactory, HasApiTokens;
    protected $table = 'accounts';
    protected $fillable = [
       'account_id',

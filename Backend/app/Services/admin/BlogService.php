@@ -4,31 +4,38 @@ namespace App\Services\admin;
 use App\Http\Requests\BlogRequest;
 use App\Models\Blogs;
 
-class Blogservice{
-    public function getAllBlogs(){
-        $blogs = Blogs::all();
-        return $blogs;
+class BlogService {
+    public function getAllBlogs() {
+        return Blogs::all();
     }
-    public function getBlogId($id){
-        return Blogs::where('id',$id)->first();
+
+    public function getBlogId($id) {
+        return Blogs::find($id);
     }
-    public function createBlog(BlogRequest $request){
-        Blogs::create([
-            'title' =>$request->title,
-            'content' =>$request->content,
-            'author' =>$request->author,
+
+    public function createBlog(BlogRequest $request) {
+        $newBlog = Blogs::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'author' => $request->author,
         ]);
+        return $newBlog;
     }
-    public function updateBlog($id,BlogRequest $request){
-        $blog = Blogs::find($id);
-        $blog->title =$request->title;
-        $blog->content = $request->content;
-        $blog->author = $request->author;
-        $blog->save();
+
+    public function updateBlog($id, BlogRequest $request) {
+        $blog = Blogs::findOrFail($id);
+        $blog->update([
+            'title' => $request->title,
+            'content' => $request->content,
+            'author' => $request->author,
+        ]);
+        return $blog;
     }
-    public function deleteBlog($id){
-        $blog = Blogs::find($id);
+
+    public function deleteBlog($id) {
+        $blog = Blogs::findOrFail($id);
         $blog->delete();
+        return $blog;
     }
 }
 ?>

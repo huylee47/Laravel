@@ -16,63 +16,61 @@ class BlogController extends Controller
         $this->blogService = $blogService;
     }
 
-    // Lấy danh sách blog
     public function indexBlog()
     {
         $blogs = $this->blogService->getAllBlogs();
-        return response()->json($blogs);  // Trả về JSON
+        return response()->json($blogs);  
     }
 
-    // Hiển thị blog theo ID
     public function getBlogId($id)
     {
         $blog = $this->blogService->getBlogId($id);
 
         if (!$blog) {
-            return response()->json(['error' => 'Blog không tồn tại'], 404);
+            return response()->json(['error' => 'Blog not found'], 404);
         }
 
-        return response()->json($blog);  // Trả về JSON
+        return response()->json($blog);
     }
 
-    // Tạo blog mới
     public function createBlog(BlogRequest $request)
     {
-        $this->blogService->createBlog($request);
+        $blog = $this->blogService->createBlog($request);
         return response()->json([
-            'message' => 'Blog đã được tạo thành công!'
-        ], 201);  // Trả về JSON với mã 201 (Created)
+            'status' => 'successs!',
+            'newBlog' => $blog,
+        ], 201); 
     }
 
-    // Cập nhật blog
     public function updateBlog($id, BlogRequest $request)
     {
         $blog = $this->blogService->getBlogId($id);
 
         if (!$blog) {
-            return response()->json(['error' => 'Blog không tồn tại'], 404);
+            return response()->json(['error' => 'Blog not found'], 404);
         }
 
         $this->blogService->updateBlog($id, $request);
 
         return response()->json([
-            'message' => 'Blog đã được cập nhật thành công!'
+            'status' => 'success',
+            'updatedBlog' => $blog,
         ]);
     }
 
-    // Xóa blog
     public function deleteBlog($id)
     {
         $blog = $this->blogService->getBlogId($id);
 
         if (!$blog) {
-            return response()->json(['error' => 'Blog không tồn tại'], 404);
+            return response()->json(['error' => 'Blog not found'], 404);
         }
 
         $this->blogService->deleteBlog($id);
 
         return response()->json([
-            'message' => 'Blog đã được xóa thành công!'
+            'status' => 'success!',
+            'deletedBlog' => $blog ,
         ]);
     }
 }
