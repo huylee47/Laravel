@@ -1,16 +1,16 @@
 <template>
   <div class="login">
-    <h2>Login</h2>
+    <h2>ĐĂNG NHẬP</h2>
     <form @submit.prevent="login">
       <div>
-        <label for="username">Username:</label>
+        <label for="username">TÀI KHOẢN:</label>
         <input type="text" v-model="username" required />
       </div>
       <div>
-        <label for="password">Password:</label>
+        <label for="password">MẬT KHẨU:</label>
         <input type="password" v-model="password" required />
       </div>
-      <button type="submit">Login</button>
+      <button type="submit">ĐĂNG NHẬP</button>
     </form>
   </div>
 </template>
