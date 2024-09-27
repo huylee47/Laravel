@@ -2,7 +2,7 @@ import apiClient from './api.js';
 
 export const fetchProducts = async () => {
     try {
-        const response = await apiClient.get('api/Admin/Product/list');
+        const response = await apiClient.get('api/product/list');
         return response.data;
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
@@ -12,7 +12,7 @@ export const fetchProducts = async () => {
 
 export const createProduct = async (ProductData) => {
     try {
-        const response = await apiClient.post('api/Admin/Product/Create', ProductData);
+        const response = await apiClient.post('api/product/create', ProductData);
         return response.data;
     } catch (error) {
         console.error('There was a problem with the create operation:', error);
@@ -22,7 +22,7 @@ export const createProduct = async (ProductData) => {
 
 export const fetchProductById = async (id) => {
     try {
-        const response = await apiClient.get(`api/Admin/Product/Edit/${id}`);
+        const response = await apiClient.get(`api/product/edit/${id}`);
         return response.data;
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
@@ -32,7 +32,7 @@ export const fetchProductById = async (id) => {
 
 export const updateProduct = async (id, ProductData) => {
     try {
-        const response = await apiClient.put(`api/Admin/Product/Edit/${id}`, ProductData);
+        const response = await apiClient.put(`api/product/edit/${id}`, ProductData);
         return response.data;
     } catch (error) {
         console.error('There was a problem with the update operation:', error);
@@ -42,7 +42,7 @@ export const updateProduct = async (id, ProductData) => {
 
 export const editProduct = async (id, ProductData) => {
     try {
-        const response = await apiClient.put(`api/Admin/Product/Edit/${id}`, ProductData);
+        const response = await apiClient.put(`api/product/edit/${id}`, ProductData);
         return response.data;
     } catch (error) {
         console.error('There was a problem with the edit operation:', error);
@@ -52,7 +52,7 @@ export const editProduct = async (id, ProductData) => {
 
 export const deleteProduct = async (id) => {
     try {
-        const response = await apiClient.delete(`api/Admin/Product/Delete/${id}`);
+        const response = await apiClient.delete(`api/Product/delete/${id}`);
         return response.data;
     } catch (error) {
         console.error('There was a problem with the delete operation:', error);
