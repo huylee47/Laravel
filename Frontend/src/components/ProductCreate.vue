@@ -6,7 +6,7 @@
       <input type="password" v-model="password" id="password" required placeholder="PASSWORD">
     </div>
     <button type="submit">LƯU</button>
-    <router-link :to="-1">
+    <router-link to="/products">
       <button type="button">TRỞ VỀ</button>
     </router-link>
   </form>

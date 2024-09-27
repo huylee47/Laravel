@@ -39,7 +39,6 @@
           </tr>
         </tbody>
       </table>
-
     </section>
   </main>
 </template>
