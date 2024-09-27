@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { fetchUserById, updateUser } from '../services/userService.js'; // Import your API functions
+import { fetchUserById, updateUser } from '../services/userService.js';
 
 export default {
     name: 'EditUser',
@@ -21,21 +21,21 @@ export default {
         return {
             username: '',
             password: '',
-            userId: this.$route.params.id, // Get the ID from the route params
+            userId: this.$route.params.id,
         };
     },
     mounted() {
-        this.loadUser(); // Load user data when the component is mounted
+        this.loadUser();
     },
     methods: {
         async loadUser() {
             try {
-                const user = await fetchUserById(this.userId); // Fetch current user data by ID
-                this.username = user.username; // Pre-fill username
-                this.password = user.password; // Pre-fill password
+                const user = await fetchUserById(this.userId);
+                console.log(user);
+                this.username = user.username || '';
+                this.password = user.password || '';
             } catch (error) {
                 console.error('Failed to load user:', error);
-                // You can handle the error here, like showing an alert or a message
             }
         },
         async updateAccount() {
@@ -45,11 +45,10 @@ export default {
             };
 
             try {
-                await updateUser(this.userId, userData); // Call the API to update the user
-                this.$router.push('/users'); // Redirect to users list after successful update
+                await updateUser(this.userId, userData);
+                this.$router.push('/users');
             } catch (error) {
                 console.error('Failed to update account:', error);
-                // Handle the error appropriately (e.g., notify the user)
             }
         },
     },

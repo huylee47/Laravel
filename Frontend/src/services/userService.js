@@ -5,7 +5,7 @@ export const fetchUsers = async () => {
         const response = await apiClient.get('api/Admin/Account/list');
         return response.data;
     } catch (error) {
-        console.error('There was a problem with the fetch operation:', error);
+        console.error('Đã xảy ra sự cố với thao tác tìm nạp:', error);
         throw error;
     }
 };

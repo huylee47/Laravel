@@ -1,9 +1,9 @@
 <template>
   <h1>Sửa đổi sản phẩm</h1>
-  <form @submit.prevent="updateAccount" class="form-container">
+  <form @submit.prevent="updateProduct" class="form-container">
     <div class="input">
-      <input type="text" v-model="username" id="username" required placeholder="TÊN">
-      <input type="text" v-model="price" id="price" required placeholder="GIÁ">
+      <input type="text" v-model="name" id="name" required placeholder="TÊN SẢN PHẨM">
+      <input type="number" v-model="price" id="price" required placeholder="GIÁ SẢN PHẨM">
     </div>
     <button type="submit">LƯU</button>
     <router-link to="/products">
@@ -13,13 +13,13 @@
 </template>
 
 <script>
-import { fetchProductById, updateProduct } from '../services/productService.js'; // Import your API functions
+import { fetchProductById, updateProduct } from '../services/productService.js';
 
 export default {
   name: 'EditProduct',
   data() {
     return {
-      username: '',
+      name: '',
       price: '',
       productId: this.$route.params.id,
     };
@@ -30,24 +30,24 @@ export default {
   methods: {
     async loadProduct() {
       try {
-        const user = await fetchProductById(this.productId);
-        this.username = user.username;
-        this.price = user.price;
+        const product = await fetchProductById(this.productId);
+        this.name = product.name || '';
+        this.price = product.price || '';
       } catch (error) {
-        console.error('Failed to load user:', error);
+        console.error('Failed to load product:', error);
       }
     },
-    async updateAccount() {
+    async updateProduct() {
       const productData = {
-        username: this.username,
+        name: this.name,
         price: this.price,
       };
 
       try {
         await updateProduct(this.productId, productData);
-        this.$router.push('/users');
+        this.$router.push('/products');
       } catch (error) {
-        console.error('Failed to update account:', error);
+        console.error('Failed to update product:', error);
       }
     },
   },

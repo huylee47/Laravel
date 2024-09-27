@@ -32,7 +32,10 @@ export default {
         password: this.password,
         _token: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
       }).then(response => {
-        localStorage.setItem('token', response.data.token);
+        const token = response.data.token;
+        const role = response.data.role;
+        localStorage.setItem('token', token);
+        console.log('Token:', token, 'Role:', role);
         this.$store.dispatch('login', response.data.user);
         this.$router.push('/dashboard');
       }).catch(error => {
@@ -41,5 +44,6 @@ export default {
       });
     }
   }
+
 };
 </script>
