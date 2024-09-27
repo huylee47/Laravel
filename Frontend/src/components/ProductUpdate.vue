@@ -1,9 +1,9 @@
 <template>
   <h1>Sửa đổi sản phẩm</h1>
-  <form @submit.prevent="updateProduct" class="form-container">
+  <form @submit.prevent="updateAccount" class="form-container">
     <div class="input">
-      <input type="text" v-model="name" id="name" required placeholder="TÊN SẢN PHẨM">
-      <input type="number" v-model="price" id="price" required placeholder="GIÁ">
+      <input type="text" v-model="username" id="username" required placeholder="TÊN">
+      <input type="text" v-model="price" id="price" required placeholder="GIÁ">
     </div>
     <button type="submit">LƯU</button>
     <router-link to="/products">
@@ -13,47 +13,41 @@
 </template>
 
 <script>
-import { fetchProductById, updateProduct } from '../services/productService.js';
-
+import { fetchProductById, updateProduct } from '../services/productService.js'; // Import your API functions
 
 export default {
   name: 'EditProduct',
   data() {
     return {
-      name: '',
+      username: '',
       price: '',
       productId: this.$route.params.id,
     };
   },
   mounted() {
     this.loadProduct();
-
   },
   methods: {
     async loadProduct() {
       try {
-        const product = await fetchProductById(this.productId);
-        this.name = product.name;
-        this.price = product.price;
+        const user = await fetchProductById(this.productId);
+        this.username = user.username;
+        this.price = user.price;
       } catch (error) {
-        console.error('Không thể tải sản phẩm:', error);
-        alert('Không thể tải dữ liệu sản phẩm.');
-
+        console.error('Failed to load user:', error);
       }
     },
-    async updateProduct() {
+    async updateAccount() {
       const productData = {
-        name: this.name,
+        username: this.username,
         price: this.price,
       };
 
       try {
         await updateProduct(this.productId, productData);
-        this.$router.push('/products');
+        this.$router.push('/users');
       } catch (error) {
-        console.error('Không thể cập nhật sản phẩm:', error);
-
-
+        console.error('Failed to update account:', error);
       }
     },
   },

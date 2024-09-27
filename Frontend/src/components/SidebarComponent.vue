@@ -10,7 +10,6 @@
                 <ul class="side-dropdown">
                     <li><router-link to="/users">Quản lý nhân viên</router-link></li>
                     <li><router-link to="/products">Quản lý sản phẩm</router-link></li>
-                    <li><router-link to="/roles">Quản lý chức vụ</router-link></li>
                 </ul>
             </li>
             <li class="divider" data-text="Tính năng">Tính năng</li>
@@ -18,8 +17,8 @@
         </ul>
         <div class="ads">
             <div class="wrapper">
-                <a href="#" class="btn-upgrade">Upgrade</a>
-                <p>Become a <span>PRO</span> member and enjoy <span>All Features</span></p>
+                <a href="#" class="btn-upgrade">NÂNG CẤP</a>
+                <p>Trở thành thành viên <span>PRO</span> và tận hưởng <span>Tất cả tính năng</span></p>
             </div>
         </div>
     </section>
