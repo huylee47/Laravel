@@ -1,23 +1,8 @@
 import apiClient from './api.js';
 
-
-export const countProducts = async () => {
-    try {
-        const response = await apiClient.get('api/Admin/Product/list');
-        // const products = response.data;
-        const productCount = products.length;
-        console.log(`Number of products: ${productCount}`);
-        return productCount;
-    } catch (error) {
-        console.error('There was a problem with the fetch operation:', error);
-        throw error;
-    }
-};
-
-
 export const fetchProducts = async () => {
     try {
-        const response = await apiClient.get('api/Admin/Product/list');
+        const response = await apiClient.get('Admin/Product/list');
         return response.data;
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);

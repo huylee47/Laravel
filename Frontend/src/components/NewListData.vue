@@ -1,37 +1,55 @@
 <template>
-    <div class="updates-container">
-        <h2>Recent Updates</h2>
-        <div class="update-item">
-            <div class="profile-pic">
-                <img src="" alt="Mike Tyson">
-            </div>
-            <div class="update-details">
-                <p><strong>Mike Tyson</strong> received his order of Night lion tech GPS drone.</p>
-                <span>2 Minutes Ago</span>
+    <!-- Phần đăng tải -->
+    <header class="header">
+        <div class="header-left">
+            <div class="search-bar">
+                <img src="../assets/img/avt.jpg" alt="User Avatar">
+                <input type="text" placeholder="Khoa ơi, bạn đang nghĩ gì thế?">
             </div>
         </div>
-
-        <div class="update-item">
-            <div class="profile-pic">
-                <img src="" alt="Diana Ayi">
-            </div>
-            <div class="update-details">
-                <p><strong>Diana Ayi</strong> declined her order of 2 DJI Air 2S.</p>
-                <span>5 Minutes Ago</span>
-            </div>
+        <div class="header-right">
+            <button class="upload-btn">ĐĂNG TẢI</button>
         </div>
-
-        <div class="update-item">
-            <div class="profile-pic">
-                <img src="" alt="Mandy Roy">
-            </div>
-            <div class="update-details">
-                <p><strong>Mandy Roy</strong> received his order of LARVENDER KF102 Drone.</p>
-                <span>6 Minutes Ago</span>
-            </div>
+    </header>
+    <!-- Phần bài đăng -->
+    <section class="post-section">
+        <div class="post-header">
+            <img src="../assets/img/avt.jpg" alt="User Avatar">
+            <p class="post-name">Đăng Khoa</p>
         </div>
-    </div>
+        <div class="post-content">
+            <p class="post-text">Xui ác =))</p>
+            <img src="../assets/img/feed.jpg" alt="Post Image" class="post-image">
+        </div>
+    </section>
+    <section class="post-section">
+        <div class="post-header">
+            <img src="../assets/img/avt1.jpg" alt="User Avatar">
+            <p class="post-name">An</p>
+        </div>
+        <div class="post-content">
+            <p class="post-text">còn đúng mấy con viper v2 pro này dọn nốt ạ
+                fullbox: 1700
+                gdtt hn hoặc cod tq
+                nhận thu mua trade up gear</p>
+            <img src="../assets/img/feed1.jpg" alt="Post Image" class="post-image">
+        </div>
+    </section>
+    <section class="post-section">
+        <div class="post-header">
+            <img src="../assets/img/avt2.jpg" alt="User Avatar">
+            <p class="post-name">An</p>
+        </div>
+        <div class="post-content">
+            <p class="post-text">Con tằm đắm đuối vì tờ
+                Anh say vì rượu, ngẩn ngơ vì tình
+                Có duyên ta mới có tình
+                Chào nhau một cái cho mình thêm duyên 😘🤭</p>
+            <img src="../assets/img/feed2.jpg" alt="Post Image" class="post-image">
+        </div>
+    </section>
 </template>
+
 <script>
 
 </script>

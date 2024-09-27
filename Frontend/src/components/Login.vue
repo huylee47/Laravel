@@ -1,17 +1,13 @@
 <template>
-  <div class="login">
-    <h2>ĐĂNG NHẬP</h2>
-    <form @submit.prevent="login">
-      <div>
-        <label for="username">TÀI KHOẢN:</label>
-        <input type="text" v-model="username" required />
-      </div>
-      <div>
-        <label for="password">MẬT KHẨU:</label>
-        <input type="password" v-model="password" required />
-      </div>
-      <button type="submit">ĐĂNG NHẬP</button>
-    </form>
+  <div class="container">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <div class="center">
+      <h2>Vui lòng đăng nhập</h2>
+      <input type="text" placeholder="username" v-model="username" @keydown.enter="login" />
+      <input type="password" placeholder="password" v-model="password" @keydown.enter="login" />
+      <button @click="login" style="width: 150px;">Login</button>
+    </div>
   </div>
 </template>
 
@@ -27,6 +23,10 @@ export default {
   },
   methods: {
     login() {
+      if (!this.username || !this.password) {
+        alert('Vui lòng điền vào cả hai trường.');
+        return;
+      }
       axios.post('http://127.0.0.1:8000/api/Auth/login', {
         username: this.username,
         password: this.password,
@@ -37,6 +37,7 @@ export default {
         this.$router.push('/dashboard');
       }).catch(error => {
         console.error('Login failed:', error);
+        alert('Đăng nhập không thành công. Vui lòng kiểm tra thông tin đăng nhập của bạn.');
       });
     }
   }
