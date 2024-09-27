@@ -1,29 +1,24 @@
 <template>
-  <div class="container">
+  <div>
     <Sidebar />
-    <main class="main-content">
-      <header>
-        <h1><i class="fas fa-home"></i> Tổng quan</h1>
-      </header>
-      <DashboardDataTable />
-      <NewsDataTable />
-    </main>
+    <section id="content">
+      <Navbar />
+      <Dashboard />
+    </section>
   </div>
 </template>
 
 <script>
-import Sidebar from '../components/Sidebar.vue';
-import DashboardDataTable from '../components/DashboardListData.vue';
-import NewsDataTable from '../components/NewListData.vue';
-export default {
-  components: {
-    Sidebar,
-    DashboardDataTable,
-    NewsDataTable,
-  },
+import Sidebar from '../components/SidebarComponent.vue';
+import Navbar from '../components/NavbarComponent.vue';
+import Dashboard from '../components/DashboardComponent.vue';
+import effect from '@/assets/script.js';
 
-};
+export default {
+  name: "App",
+  components: { Sidebar, Navbar, Dashboard },
+  mounted() {
+    effect();
+  }
+}
 </script>
-<style scoped>
-@import '../assets/css/style.module.css';
-</style>

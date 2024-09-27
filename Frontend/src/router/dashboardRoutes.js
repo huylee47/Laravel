@@ -1,8 +1,5 @@
 import Dashboard from '../pages/Dashboard.vue';
-import DashboardListData from '../components/DashboardListData.vue';
-
-import News from '../pages/News.vue';
-import NewListData from '../components/NewListData.vue';
+import DashboardComponent from '../components/DashboardComponent.vue';
 
 const dashboardRoutes = [
     {
@@ -10,14 +7,12 @@ const dashboardRoutes = [
         meta: { requiresAuth: true },
         components: {
             default: Dashboard,
-            news: News,
         },
         children: [
             {
                 path: '',
                 components: {
-                    default: DashboardListData,
-                    news: NewListData,
+                    default: DashboardComponent,
                 }
             }
         ],

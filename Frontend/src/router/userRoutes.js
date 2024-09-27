@@ -1,7 +1,7 @@
 import Users from '../pages/Users.vue';
 import UserListData from '../components/UserListData.vue';
 import UserCreate from '../components/UserCreate.vue';
-import UUserUpdate from '../components/UserUpdate.vue';
+import UserUpdate from '../components/UserUpdate.vue';
 
 const userRoutes = [
     {
@@ -22,7 +22,7 @@ const userRoutes = [
             {
                 path: 'edit/:id',
                 name: 'UserUpdate',
-                component: UUserUpdate,
+                component: UserUpdate,
             },
         ],
     },

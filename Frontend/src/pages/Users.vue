@@ -1,28 +1,25 @@
 <template>
-  <div class="container">
+  <div>
     <Sidebar />
-    <main class="main-content">
-      <header>
-        <h1><i class="fas fa-user"></i> Tài Khoản</h1>
-      </header>
-      <!-- Hiển thị component dựa trên route con -->
+    <section id="content">
+      <Navbar />
+      <Dashboard />
       <router-view />
-    </main>
+    </section>
   </div>
 </template>
 
+
 <script>
-import Sidebar from '../components/Sidebar.vue';
-import AccountDataTable from '../components/UserListData.vue';
+import Sidebar from '../components/SidebarComponent.vue';
+import Navbar from '../components/NavbarComponent.vue';
+import effect from '@/assets/script.js';
 
 export default {
-  components: {
-    AccountDataTable,
-    Sidebar,
-  },
-};
+    name: "App",
+    components: { Sidebar, Navbar },
+    mounted() {
+        effect();
+    }
+}
 </script>
-
-<style scoped>
-@import '../assets/css/style.module.css';
-</style>
