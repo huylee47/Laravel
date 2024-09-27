@@ -4,26 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Services\admin\LoginService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    private $LoginService;
+    private $loginService;
 
-    public function __construct(LoginService $LoginService)
+    public function __construct(LoginService $loginService)
     {
-        $this->LoginService= $LoginService;
+        $this->loginService = $loginService;
     }
+
+
     public function login(Request $request) {
-        $loginResult = $this->LoginService->loginAuth($request);
-        
-        if (isset($loginResult['success']) && $loginResult['success']) {
-            return response()->json(['token' => $loginResult['token'], 'role' => $loginResult['role']]);
+        $loginResult = $this->loginService->loginAuth($request);
+    
+        if ($loginResult['success']) {
+            return response()->json([
+                'token' => $loginResult['token'],
+                'role' => $loginResult['role']
+            ], 200); 
         }
     
-        return response()->json($loginResult, 401); // Trả về kết quả lỗi
+        return response()->json([
+            'error' => $loginResult['error']
+        ], 401); 
     }
     
-    }
-
+}
