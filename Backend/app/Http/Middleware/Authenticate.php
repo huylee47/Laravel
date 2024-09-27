@@ -15,6 +15,11 @@ class Authenticate
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        if($request->role == 0 || $request->role== 1){
+            return $next($request);
+        }else{
+            return response()->json(['message' => 'Unauthorized Access'], 401);
+        }
+
     }
 }
