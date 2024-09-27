@@ -40,7 +40,7 @@ Route::prefix('/')->middleware(['auth:sanctum', 'abilities:admin'])->group(funct
     });
 });
 Route::prefix('/')->middleware(['auth:sanctum', 'abilities:user'])->group(function() {
-    Route::prefix('/Blog')->group(function () {
+    Route::prefix('/blog')->group(function () {
         Route::get('/list', [BlogController::class, 'indexBlog'])->name('user.Blog.index');
         Route::post('/create', [BlogController::class, 'createBlog'])->name('user.Blog.create');
         Route::get('/{id}', [BlogController::class, 'getBlogId'])->name('user.Blog.editView');
