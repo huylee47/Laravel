@@ -42,13 +42,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.login {
-  max-width: 300px;
-  margin: auto;
-  padding: 1em;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-</style>

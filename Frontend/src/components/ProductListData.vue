@@ -33,7 +33,7 @@
   </table>
 </template>
 
-<script>
+<!-- <script>
 import { fetchProducts, deleteProduct as deleteProductService } from '../services/productService.js';
 
 export default {
@@ -77,7 +77,4 @@ export default {
     },
   },
 };
-</script>
-<style scoped>
-@import '../assets/css/style.module.css';
-</style>
+</script> -->
