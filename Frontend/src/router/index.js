@@ -8,7 +8,7 @@ import productRoutes from './productRoutes';
 import dashboardRoutes from './dashboardRoutes';
 
 const routes = [
-    { path: '/', redirect: '/dashboard'},
+    { path: '/', redirect: '/dashboard' },
     ...authRoutes,
     ...dashboardRoutes,
     ...userRoutes,

@@ -3,7 +3,6 @@
     <Sidebar />
     <section id="content">
       <Navbar />
-      <Dashboard />
       <router-view />
     </section>
   </div>
@@ -16,10 +15,10 @@ import Navbar from '../components/NavbarComponent.vue';
 import effect from '@/assets/script.js';
 
 export default {
-    name: "App",
-    components: { Sidebar, Navbar },
-    mounted() {
-        effect();
-    }
+  name: "App",
+  components: { Sidebar, Navbar },
+  mounted() {
+    effect();
+  }
 }
 </script>

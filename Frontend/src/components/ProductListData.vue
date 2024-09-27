@@ -1,39 +1,48 @@
 <template>
-  <h1>Quản lý sản phẩm</h1>
-  <router-link to="/products/add">
-    <button>Thêm mới</button>
-  </router-link>
-  <table>
-    <thead>
+  <main class="table" id="customers_table">
+    <section class="table__header">
+      <h1>QUẢN LÝ SẢN PHẨM</h1>
+      <router-link to="/products/add">
+        <button>THÊM MỚI</button>
+      </router-link>
+      <div class="input-group">
+        <input type="search" placeholder="Tìm kiếm...">
+        <img src="../assets/img/search.png" alt="">
+      </div>
+    </section>
+    <section class="table__body">
+      <table>
+        <thead>
+          <tr>
+            <th> ID </th>
+            <th> TÊN </th>
+            <th> GIÁ </th>
+            <th> THAO TÁC</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-if="loading">
+            <td colspan="6">Đang tải...</td>
+          </tr>
+          <tr v-for="user in products" :key="user.id" v-else>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.price }}</td>
+            <td>
+              <router-link :to="`/products/edit/${user.id}`">
+                <button>SỬA</button>
+              </router-link>
+              <button @click="confirmDelete(user.id)">XÓA</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-      <tr>
-        <th>ID</th>
-        <th>TÊN SẢN PHẨM</th>
-        <th>GIÁ</th>
-        <th>THAO TÁC</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-if="loading">
-        <td colspan="4">Đang tải...</td>
-      </tr>
-      <tr v-for="product in products" :key="product.id" v-else>
-        <td>{{ product.id }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.price }}</td>
-        <td>
-          <router-link :to="`/products/edit/${product.id}`">
-            <button>SỬA</button>
-          </router-link>
-          <button @click="confirmDelete(product.id)">XÓA</button>
-        </td>
-      </tr>
-
-    </tbody>
-  </table>
+    </section>
+  </main>
 </template>
 
-<!-- <script>
+<script>
 import { fetchProducts, deleteProduct as deleteProductService } from '../services/productService.js';
 
 export default {
@@ -77,4 +86,4 @@ export default {
     },
   },
 };
-</script> -->
+</script>

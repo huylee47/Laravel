@@ -3,7 +3,6 @@
         <Sidebar />
         <section id="content">
             <Navbar />
-            <Dashboard />
             <router-view />
         </section>
     </div>

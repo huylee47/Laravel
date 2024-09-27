@@ -2,7 +2,7 @@ import apiClient from './api.js';
 
 export const fetchUsers = async () => {
     try {
-        const response = await apiClient.get('api/Admin/Account/list');
+        const response = await apiClient.get('Admin/Account/list');
         return response.data;
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
