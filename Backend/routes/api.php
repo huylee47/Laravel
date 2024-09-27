@@ -23,7 +23,7 @@ Route::prefix('/')->middleware(['auth:sanctum', 'abilities:admin'])->group(funct
         Route::delete('/{id}', [AccountController::class, 'deleteAccount'])->name('admin.Account.delete');
     });
     
-    Route::prefix('/aroduct')->group(function () {
+    Route::prefix('/product')->group(function () {
         Route::get('/list', [ProductController::class, 'indexProduct'])->name('admin.Product.index');
         Route::post('/create', [ProductController::class, 'createProduct'])->name('admin.Product.create');
         Route::get('/{id}', [ProductController::class, 'getProductId'])->name('admin.Product.editView');
@@ -31,7 +31,7 @@ Route::prefix('/')->middleware(['auth:sanctum', 'abilities:admin'])->group(funct
         Route::delete('/{id}', [ProductController::class, 'deleteProduct'])->name('admin.Product.delete');
     });
     
-    Route::prefix('/Blog')->group(function () {
+    Route::prefix('/blog')->group(function () {
         Route::get('/list', [BlogController::class, 'indexBlog'])->name('admin.Blog.index');
         Route::post('/create', [BlogController::class, 'createBlog'])->name('admin.Blog.create');
         Route::get('/{id}', [BlogController::class, 'getBlogId'])->name('admin.Blog.editView');
