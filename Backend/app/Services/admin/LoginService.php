@@ -49,19 +49,30 @@ class LoginService {
         if (!Hash::check($request->input('password'), $account->password)) {
             return ['success' => false, 'error' => 'Password is incorrect.'];
         }
-    
-        // Đăng nhập và tạo token
         Auth::login($account);
-        $token = $account->createToken('authToken')->plainTextToken; // Tạo token
-    
-        if ($account->role == 1) {
-            return ['success' => true, 'token' => $token, 'role' => 'User'];
-        } elseif ($account->role == 0) {
-            return ['success' => true, 'token' => $token, 'role' => 'Admin'];
-        } else {
-            Auth::logout();
-            return ['success' => false, 'error' => 'You are banned.'];
+        /** @var \App\Models\Accounts $user **/  $user = Auth::user();
+        switch($user->role){
+            case 0:
+                $user->token = $account->createToken('authToken',  ['ability:admin'])->plainTextToken; 
+                return ['success' => true, 'token' => $user, 'role' => 'Admin'];
+            case 1:
+                $user->token = $account->createToken('authToken',  ['ability:user'])->plainTextToken; 
+                return ['success' => true, 'token' => $user, 'role' => 'User'];
+            default:
+                Auth::logout();
+                return ['success' => false, 'error' => 'You are banned.'];
         }
+
+    
+        // if ($account->role == 1) {
+        //     return ['success' => true, 'token' => $token, 'role' => 'User'];
+        // } elseif ($account->role == 0) {
+        //     return ['success' => true, 'token' => $token, 'role' => 'Admin'];
+        // } else {
+        //     Auth::logout();
+        //     return ['success' => false, 'error' => 'You are banned.'];
+        // }
+
     }
     
 }
