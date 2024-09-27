@@ -2,17 +2,15 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { isAuthenticated } from '../utils/auth';
 import authRoutes from './authRoutes';
 import userRoutes from './userRoutes';
-import roleRoutes from './roleRoutes';
 import newsRoutes from './newsRoutes';
 import productRoutes from './productRoutes';
 import dashboardRoutes from './dashboardRoutes';
 
 const routes = [
-    { path: '/', redirect: '/dashboard' },
+    { path: '/', redirect: '/login' },
     ...authRoutes,
     ...dashboardRoutes,
     ...userRoutes,
-    ...roleRoutes,
     ...newsRoutes,
     ...productRoutes,
 ];

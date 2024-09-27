@@ -2,8 +2,8 @@
     <h1>Sửa đổi nhân viên</h1>
     <form @submit.prevent="updateAccount" class="form-container">
         <div class="input">
-            <input type="text" v-model="username" id="username" required placeholder="USERNAME">
-            <input type="password" v-model="password" id="password" required placeholder="PASSWORD">
+            <input type="text" v-model="username" id="username" required placeholder="TÀI KHOẢN">
+            <input type="password" v-model="password" id="password" required placeholder="MẬT KHẨU">
         </div>
         <button type="submit">LƯU</button>
         <router-link to="/users">
@@ -55,4 +55,3 @@ export default {
     },
 };
 </script>
-
