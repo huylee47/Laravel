@@ -49,18 +49,16 @@ class AccountController extends Controller
     //     ], 201);  
     // }
 
-    public function getProductId($id)
-    {
+    public function getAccountId($id){
         $account = $this->accountService->getAccountId($id);
 
         if (!$account) {
             return response()->json([
                 'status' => 'Account not found',
-            ], 404);
+        ], 404);
         }
-        return response()->json($account);  
+        return $account;
     }
-
     public function updateAccount($id, AccountRequest $request)
     {
         $account = $this->accountService->getAccountId($id);
