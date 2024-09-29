@@ -69,11 +69,11 @@ class AccountController extends Controller
         ], 404);
         }
 
-        $this->accountService->updateAccount($id, $request);
+        $newAccount = $this->accountService->updateAccount($id, $request);
 
         return response()->json([
             'status' => 'success',
-            'updatedAccount' => $account
+            'updatedAccount' => $newAccount
         ]);
     }
 

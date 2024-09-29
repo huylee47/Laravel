@@ -52,11 +52,11 @@ class ProductController extends Controller
         ], 404);
 
         }
-         $this->productService->updateProduct($id, $request);
+        $newProduct = $this->productService->updateProduct($id, $request);
 
         return response()->json([
             'status' => 'success',
-            'updatedProduct' => $product
+            'updatedProduct' => $newProduct
         ]);
     }
 
