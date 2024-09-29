@@ -4,6 +4,7 @@
         <div class="input">
             <input type="text" v-model="username" id="username" required placeholder="TÀI KHOẢN">
             <input type="password" v-model="password" id="password" required placeholder="MẬT KHẨU">
+            <input type="text" v-model="role" id="role" required placeholder="VAI TRÒ">
         </div>
         <button type="submit">LƯU</button>
         <router-link to="/users">
@@ -21,6 +22,7 @@ export default {
         return {
             username: '',
             password: '',
+            role: '',
             userId: this.$route.params.id,
         };
     },
@@ -34,6 +36,7 @@ export default {
                 console.log(user);
                 this.username = user.username || '';
                 this.password = user.password || '';
+                this.role = user.role.toString() || '';
             } catch (error) {
                 console.error('Failed to load user:', error);
             }
@@ -42,6 +45,7 @@ export default {
             const userData = {
                 username: this.username,
                 password: this.password,
+                role: this.role,
             };
 
             try {
@@ -53,4 +57,5 @@ export default {
         },
     },
 };
+
 </script>
