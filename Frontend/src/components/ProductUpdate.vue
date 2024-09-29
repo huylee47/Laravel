@@ -31,10 +31,12 @@ export default {
     async loadProduct() {
       try {
         const product = await fetchProductById(this.productId);
+        console.log(product);
         this.name = product.name || '';
         this.price = product.price || '';
       } catch (error) {
         console.error('Failed to load product:', error);
+        alert('Không thể tải sản phẩm. Vui lòng thử lại sau.');
       }
     },
     async updateProduct() {
@@ -45,9 +47,11 @@ export default {
 
       try {
         await updateProduct(this.productId, productData);
+        alert('Cập nhật sản phẩm thành công!');
         this.$router.push('/products');
       } catch (error) {
         console.error('Failed to update product:', error);
+        alert('Cập nhật sản phẩm thất bại. Vui lòng thử lại.');
       }
     },
   },
