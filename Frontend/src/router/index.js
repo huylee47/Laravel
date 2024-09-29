@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { isAuthenticated } from '../utils/auth';
 import authRoutes from './authRoutes';
 import userRoutes from './userRoutes';
-import newsRoutes from './newsRoutes';
+import blogRoutes from './blogRoutes';
 import productRoutes from './productRoutes';
 import dashboardRoutes from './dashboardRoutes';
 
@@ -11,7 +11,7 @@ const routes = [
     ...authRoutes,
     ...dashboardRoutes,
     ...userRoutes,
-    ...newsRoutes,
+    ...blogRoutes,
     ...productRoutes,
 ];
 
