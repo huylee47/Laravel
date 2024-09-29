@@ -45,7 +45,14 @@ class ProductController extends Controller
 
     public function updateProduct($id, ProductRequest $request)
     {
-        $product= $this->productService->updateProduct($id, $request);
+        $product = $this->productService->getProductId($id);
+        if (!$product){
+            return response()->json([
+                'status' => 'Product not found',
+        ], 404);
+
+        }
+         $this->productService->updateProduct($id, $request);
 
         return response()->json([
             'status' => 'success',
