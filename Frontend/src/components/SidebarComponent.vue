@@ -13,7 +13,7 @@
                 </ul>
             </li>
             <li class="divider" data-text="Tính năng">Tính năng</li>
-            <li><router-link to="/news"><i class='bx bx-table icon'></i> Quản lý tin tức</router-link></li>
+            <li><router-link to="/blogs"><i class='bx bx-table icon'></i> Quản lý tin tức</router-link></li>
         </ul>
         <div class="ads">
             <div class="wrapper">
