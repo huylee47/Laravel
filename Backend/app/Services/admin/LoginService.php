@@ -30,10 +30,10 @@ class LoginService {
         switch($user->role) {
             case 0:
                 $token = $account->createToken('authToken', ['admin'])->plainTextToken; 
-                return ['success' => true, 'token' => $token, 'role' => 'Admin'];
+                return ['success' => true, 'token' => $token, 'role' => 'admin'];
             case 1:
                 $token = $account->createToken('authToken', ['user'])->plainTextToken; 
-                return ['success' => true, 'token' => $token, 'role' => 'User'];
+                return ['success' => true, 'token' => $token, 'role' => 'user'];
             default:
                 Auth::logout();
                 return ['success' => false, 'error' => 'You are banned.'];
