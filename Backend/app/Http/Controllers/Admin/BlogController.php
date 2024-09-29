@@ -50,11 +50,11 @@ class BlogController extends Controller
             return response()->json(['error' => 'Blog not found'], 404);
         }
 
-        $this->blogService->updateBlog($id, $request);
+        $newBlog = $this->blogService->updateBlog($id, $request);
 
         return response()->json([
             'status' => 'success',
-            'updatedBlog' => $blog,
+            'updatedBlog' => $newBlog,
         ]);
     }
 
