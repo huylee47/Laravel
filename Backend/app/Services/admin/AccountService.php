@@ -21,22 +21,18 @@ class AccountService{
         return $newAccount;
     }
     public function updateAccount($id,AccountRequest $request){
-        $account = Accounts::find($id);
-        $account->username = $request->validated()['username'];
-        $account->password = bcrypt($request->validated()['password']); 
-        $account->role = $request->input('role');
-        $account->save();
+        $account = Accounts::findOrFail($id);
+        $account->update([
+            'username' => $request->validated()['username'],
+            'password' => bcrypt($request->validated()['password']),
+            'role' => $request->input('role'),
+        ]);
         return $account;
     }
+
     public function deleteAccount($id){
         $account = Accounts::find($id);
         $account->delete();
     }
-    // public function changeRole($id){
-    //     $account = Accounts::find($id);
-    //     $account->role = ($account->role == 1) ? 2 : $account->role;
-    //     $account->save();
-    //     return $account;
-    // }
 }
 ?>
