@@ -5,14 +5,15 @@ use App\Http\Requests\ProductRequest;
 use App\Models\Products;
 
 class ProductService {
+    // get all products
     public function getAllProducts() {
         return Products::all();
     }
-
+    // get product by id
     public function getProductId($id) {
         return Products::find($id);
     }
-
+    // create new product
     public function createProduct(ProductRequest $request) {
         $newProduct = Products::create([
             'name' => $request->name,
@@ -20,7 +21,7 @@ class ProductService {
         ]);
         return $newProduct;
     }
-
+    // update product by id
     public function updateProduct($id, ProductRequest $request) {
         $product = Products::findOrFail($id);
         $product->update([
@@ -29,7 +30,7 @@ class ProductService {
         ]);
         return $product;
     }
-
+    // delete product by id
     public function deleteProduct($id) {
         $product = Products::findOrFail($id);
         $product->delete();
