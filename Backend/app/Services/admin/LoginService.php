@@ -1,20 +1,16 @@
 <?php 
 namespace App\Services\admin;
 
+use App\Http\Requests\LoginRequest;
 use App\Models\Accounts;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class LoginService {
-    public function loginAuth(Request $request) {
-        $request->validate([
-            'username' => 'required|string|max:255',
-            'password' => 'required|string',
-        ]);
-    
+    // Login service 
+    public function loginAuth(LoginRequest $request) {
+        // Validate the request
         $account = Accounts::where('username', $request->input('username'))->first();
-    
         if (!$account) {
             return ['success' => false, 'error' => 'Username is incorrect.'];
         }
@@ -22,7 +18,7 @@ class LoginService {
         if (!Hash::check($request->input('password'), $account->password)) {
             return ['success' => false, 'error' => 'Password is incorrect.'];
         }
-    
+        // create role after authentication
         Auth::login($account);
         /** @var \App\Models\Accounts $user **/
         $user = Auth::user();
