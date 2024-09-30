@@ -4,15 +4,17 @@ use App\Models\Accounts;
 use App\Http\Requests\AccountRequest;
 
 class AccountService{
+    // Get all account service  
     public function getAllAccount(){
         $Accounts = Accounts::all();
         return $Accounts;
     }
+    // Get account by id service  
     public function getAccountId($id){
         return Accounts::where('id',$id)->first();
     }
+    // Create account service  (hashing password)
     public function createAccount(AccountRequest $request){
-
         $newAccount = Accounts::create([
             'username' =>$request->username,
             'password' =>bcrypt($request->password),
@@ -20,6 +22,7 @@ class AccountService{
         ]);
         return $newAccount;
     }
+    // Update account service
     public function updateAccount($id,AccountRequest $request){
         $account = Accounts::findOrFail($id);
         $account->update([
@@ -29,7 +32,7 @@ class AccountService{
         ]);
         return $account;
     }
-
+    // Delete account service
     public function deleteAccount($id){
         $account = Accounts::find($id);
         $account->delete();

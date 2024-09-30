@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Services\admin\LoginService;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -13,11 +14,10 @@ class LoginController extends Controller
     {
         $this->loginService = $loginService;
     }
-
-
-    public function login(Request $request) {
+    // login controller
+    public function login(LoginRequest $request) {
         $loginResult = $this->loginService->loginAuth($request);
-    
+        // send the login result
         if ($loginResult['success']) {
             return response()->json([
                 'token' => $loginResult['token'],
@@ -28,6 +28,12 @@ class LoginController extends Controller
         return response()->json([
             'error' => $loginResult['error']
         ], 401); 
+    }
+
+    // logout controller
+    public function logout(){
+        Auth::logout();
+        return response()->json(['message' => 'Logged out successfully.'], 200);
     }
     
 }
