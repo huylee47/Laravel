@@ -1,4 +1,4 @@
-import axios from '../axios';
+import axios from '../store/axios.js';
 import apiClient from './api.js';
 
 export const fetchProfile = async () => {
