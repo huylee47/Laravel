@@ -1,12 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AccountRequest;
-use App\Models\Accounts;
 use App\Services\admin\AccountService;
-use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
@@ -16,15 +13,13 @@ class AccountController extends Controller
     {
         $this->accountService = $accountService;
     }
-
-    // Lấy danh sách tài khoản
+    // get all accounts controller
     public function indexAccount()
     {
         $accounts = $this->accountService->getAllAccount();
         return response()->json($accounts);  
     }
-
-    // Tạo tài khoản mới
+    // create new account controller
     public function createAccount(AccountRequest $request)
     {
         $newAccount =  $this->accountService->createAccount($request);
@@ -33,22 +28,7 @@ class AccountController extends Controller
             'account' => $newAccount
         ], 201);  
     }
-
-    // public function store(Request $request)
-    // {
-    //     $account = new Accounts([
-    //         'username' => $request->get('username'),
-    //         'status' => 'success',
-    //         'password' => bcrypt($request->get('password')),
-    //     ]);
-    //     $account->save();
-
-    //     return response()->json([
-    //         'status' => 'success',
-    //         'account' => $account
-    //     ], 201);  
-    // }
-
+    // get account by id controller
     public function getAccountId($id){
         $account = $this->accountService->getAccountId($id);
 
@@ -59,6 +39,7 @@ class AccountController extends Controller
         }
         return $account;
     }
+    // update account by id controller 
     public function updateAccount($id, AccountRequest $request)
     {
         $account = $this->accountService->getAccountId($id);
@@ -76,10 +57,9 @@ class AccountController extends Controller
             'updatedAccount' => $newAccount
         ]);
     }
-
+    // delete account by id controller
     public function deleteAccount($id)
     {
-        // $accountCurrent = $this->accountService->getAccountId($id);
         $account = $this->accountService->getAccountId($id);
         if (!$account) {
             return response()->json(['error' => 'Account not found'], 404);
