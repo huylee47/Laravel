@@ -5,6 +5,8 @@ import userRoutes from './userRoutes';
 import blogRoutes from './blogRoutes';
 import productRoutes from './productRoutes';
 import dashboardRoutes from './dashboardRoutes';
+import infomationRoutes from './infomationRoutes';
+import settingRoutes from './settingRoutes';
 
 const routes = [
     { path: '/', redirect: '/login' },
@@ -13,6 +15,8 @@ const routes = [
     ...userRoutes,
     ...blogRoutes,
     ...productRoutes,
+    ...infomationRoutes,
+    ...settingRoutes,
 ];
 
 
