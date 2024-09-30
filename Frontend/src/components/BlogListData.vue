@@ -1,8 +1,8 @@
 <template>
-    <main class="table" id="customers_table">
+    <main class="table" id="blogs_table">
         <section class="table__header">
             <h1>QUẢN LÝ TIN TỨC</h1>
-            <router-link to="/news/add">
+            <router-link to="/blogs/add">
                 <button>THÊM MỚI</button>
             </router-link>
             <div class="input-group">
@@ -31,7 +31,7 @@
                         <td>{{ blog.content }}</td>
                         <td>{{ blog.author }}</td>
                         <td>
-                            <router-link :to="`/blogs/edit/${user.id}`">
+                            <router-link :to="`/blogs/edit/${blog.id}`">
                                 <button>SỬA</button>
                             </router-link>
                             <button @click="confirmDelete(blog.id)">XÓA</button>

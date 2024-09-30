@@ -34,7 +34,7 @@ export default {
         await createUser(userData);
         this.$router.push('/users');
       } catch (error) {
-        console.error('Failed to create account:', error);
+        console.error('Không tạo được tài khoản:', error);
       }
     },
   },

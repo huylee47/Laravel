@@ -35,7 +35,7 @@ export default {
         this.name = product.name || '';
         this.price = product.price || '';
       } catch (error) {
-        console.error('Failed to load product:', error);
+        console.error('Không thể tải sản phẩm:', error);
         alert('Không thể tải sản phẩm. Vui lòng thử lại sau.');
       }
     },
@@ -50,7 +50,7 @@ export default {
         alert('Cập nhật sản phẩm thành công!');
         this.$router.push('/products');
       } catch (error) {
-        console.error('Failed to update product:', error);
+        console.error('Không thể cập nhật sản phẩm:', error);
         alert('Cập nhật sản phẩm thất bại. Vui lòng thử lại.');
       }
     },

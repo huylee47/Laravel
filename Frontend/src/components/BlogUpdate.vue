@@ -1,60 +1,63 @@
 <template>
-    <h1>Sửa đổi sản phẩm</h1>
-    <form @submit.prevent="updateProduct" class="form-container">
-      <div class="input">
-        <input type="text" v-model="name" id="name" required placeholder="TÊN SẢN PHẨM">
-        <input type="number" v-model="price" id="price" required placeholder="GIÁ SẢN PHẨM">
-      </div>
-      <button type="submit">LƯU</button>
-      <router-link to="/products">
-        <button type="button">TRỞ VỀ</button>
-      </router-link>
-    </form>
-  </template>
-  
-  <script>
-  import { fetchProductById, updateProduct } from '../services/productService.js';
-  
-  export default {
-    name: 'EditProduct',
-    data() {
-      return {
-        name: '',
-        price: '',
-        productId: this.$route.params.id,
+  <h1>Sửa đổi Blog</h1>
+  <form @submit.prevent="updateBlog" class="form-container">
+    <div class="input">
+      <input type="text" v-model="title" id="title_input" required placeholder="TIÊU ĐỀ">
+      <input type="text" v-model="content" id="content_input" required placeholder="NỘI DUNG">
+      <input type="text" v-model="author" id="author" required placeholder="TÁC GIẢ">
+    </div>
+    <button type="submit">LƯU</button>
+    <router-link to="/blogs">
+      <button type="button">TRỞ VỀ</button>
+    </router-link>
+  </form>
+</template>
+
+<script>
+import { fetchBlogById, updateBlog } from '../services/blogService.js';
+
+export default {
+  name: 'EditBlog',
+  data() {
+    return {
+      title: '',
+      content: '',
+      author: '',
+      blogId: this.$route.params.id,
+    };
+  },
+  mounted() {
+    this.loadBlog();
+  },
+  methods: {
+    async loadBlog() {
+      try {
+        const blog = await fetchBlogById(this.blogId);
+        console.log(blog);
+        this.title = blog.title || '';
+        this.content = blog.content || '';
+        this.author = blog.author || '';
+      } catch (error) {
+        console.error('Failed to load blog:', error);
+        alert('Không thể tải sản phẩm. Vui lòng thử lại sau.');
+      }
+    },
+    async updateBlog() {
+      const blogData = {
+        title: this.title,
+        content: this.content,
+        author: this.author,
       };
+
+      try {
+        await updateBlog(this.blogId, blogData);
+        alert('Cập nhật blog thành công!');
+        this.$router.push('/blogs');
+      } catch (error) {
+        console.error('Failed to update product:', error);
+        alert('Cập nhật blog thất bại. Vui lòng thử lại.');
+      }
     },
-    mounted() {
-      this.loadProduct();
-    },
-    methods: {
-      async loadProduct() {
-        try {
-          const product = await fetchProductById(this.productId);
-          console.log(product);
-          this.name = product.name || '';
-          this.price = product.price || '';
-        } catch (error) {
-          console.error('Failed to load product:', error);
-          alert('Không thể tải sản phẩm. Vui lòng thử lại sau.');
-        }
-      },
-      async updateProduct() {
-        const productData = {
-          name: this.name,
-          price: this.price,
-        };
-  
-        try {
-          await updateProduct(this.productId, productData);
-          alert('Cập nhật sản phẩm thành công!');
-          this.$router.push('/products');
-        } catch (error) {
-          console.error('Failed to update product:', error);
-          alert('Cập nhật sản phẩm thất bại. Vui lòng thử lại.');
-        }
-      },
-    },
-  };
-  </script>
-  
+  },
+};
+</script>

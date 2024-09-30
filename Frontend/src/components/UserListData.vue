@@ -62,7 +62,7 @@ export default {
       try {
         this.users = await fetchUsers();
       } catch (error) {
-        console.error('Failed to load users:', error);
+        console.error('Không thể tải dữ liệu nhân viên:', error);
         alert('Không thể tải dữ liệu nhân viên.');
       } finally {
         this.loading = false;
@@ -73,12 +73,12 @@ export default {
         await deleteUserService(id);
         this.loadUsers();
       } catch (error) {
-        console.error('Failed to delete user:', error);
+        console.error('Không thể xóa dữ liệu nhân viên:', error);
         alert('Không thể xóa dữ liệu nhân viên.');
       }
     },
     confirmDelete(id) {
-      if (confirm('Are you sure you want to delete this user?')) {
+      if (confirm('Bạn có chắc chắn muốn xóa người dùng này?')) {
         this.removeUser(id);
       }
     },

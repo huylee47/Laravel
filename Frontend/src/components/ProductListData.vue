@@ -1,5 +1,5 @@
 <template>
-  <main class="table" id="customers_table">
+  <main class="table" id="products_table">
     <section class="table__header">
       <h1>QUẢN LÝ SẢN PHẨM</h1>
       <router-link to="/products/add">
