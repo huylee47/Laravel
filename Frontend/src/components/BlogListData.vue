@@ -5,10 +5,10 @@
             <router-link to="/blogs/add">
                 <button>THÊM MỚI</button>
             </router-link>
-            <div class="input-group">
+            <!-- <div class="input-group">
                 <input type="search" placeholder="Tìm kiếm...">
                 <img src="../assets/img/search.png" alt="">
-            </div>
+            </div> -->
         </section>
         <section class="table__body">
             <table>

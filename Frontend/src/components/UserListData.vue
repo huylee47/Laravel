@@ -5,10 +5,10 @@
       <router-link to="/users/add">
         <button>THÊM MỚI</button>
       </router-link>
-      <div class="input-group">
+      <!-- <div class="input-group">
         <input type="search" placeholder="Tìm kiếm...">
         <img src="../assets/img/search.png" alt="">
-      </div>
+      </div> -->
     </section>
     <section class="table__body">
       <table>
@@ -62,8 +62,8 @@ export default {
       try {
         this.users = await fetchUsers();
       } catch (error) {
-        console.error('Không thể tải dữ liệu nhân viên:', error);
-        alert('Không thể tải dữ liệu nhân viên.');
+        alert('Không có quyền truy cập hoặc xảy ra lỗi khi tải dữ liệu người dùng !');
+        this.$router.push('/dashboard');
       } finally {
         this.loading = false;
       }
@@ -73,8 +73,8 @@ export default {
         await deleteUserService(id);
         this.loadUsers();
       } catch (error) {
-        console.error('Không thể xóa dữ liệu nhân viên:', error);
-        alert('Không thể xóa dữ liệu nhân viên.');
+        alert('Không có quyền truy cập hoặc xảy ra lỗi khi xóa người dùng!');
+        this.$router.push('/users');
       }
     },
     confirmDelete(id) {

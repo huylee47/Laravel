@@ -38,7 +38,8 @@ export default {
                 this.password = user.password || '';
                 this.role = user.role.toString() || '';
             } catch (error) {
-                console.error('Failed to load user:', error);
+                alert('Không có quyền truy cập hoặc xảy ra lỗi');
+                this.$router.push('/dashboard');
             }
         },
         async updateAccount() {
@@ -52,7 +53,8 @@ export default {
                 await updateUser(this.userId, userData);
                 this.$router.push('/users');
             } catch (error) {
-                console.error('Failed to update account:', error);
+                alert('Không có quyền truy cập hoặc xảy ra lỗi');
+                this.$router.push('/users');
             }
         },
     },

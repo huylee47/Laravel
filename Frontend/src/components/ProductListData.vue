@@ -5,10 +5,10 @@
       <router-link to="/products/add">
         <button>THÊM MỚI</button>
       </router-link>
-      <div class="input-group">
+      <!-- <div class="input-group">
         <input type="search" placeholder="Tìm kiếm...">
         <img src="../assets/img/search.png" alt="">
-      </div>
+      </div> -->
     </section>
     <section class="table__body">
       <table>
@@ -61,9 +61,8 @@ export default {
       try {
         this.products = await fetchProducts();
       } catch (error) {
-        console.error('Không thể tải sản phẩm:', error);
-
-        alert('Không thể tải dữ liệu sản phẩm.');
+        alert('Không có quyền truy cập hoặc xảy ra lỗi khi tải dữ liệu sản phẩm !');
+        this.$router.push('/dashboard');
       } finally {
         this.loading = false;
       }
@@ -73,9 +72,8 @@ export default {
         await deleteProductService(id);
         this.loadProducts();
       } catch (error) {
-        console.error('Không thể xóa sản phẩm:', error);
-
-        alert('Không thể xóa dữ liệu sản phẩm.');
+        alert('Không có quyền truy cập hoặc xảy ra lỗi khi xóa sản phẩm !');
+        this.$router.push('/products');
       }
     },
     confirmDelete(id) {
