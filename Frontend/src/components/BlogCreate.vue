@@ -12,7 +12,6 @@
     </router-link>
   </form>
 </template>
-
 <script>
 import { createBlog } from '../services/blogService.js';
 

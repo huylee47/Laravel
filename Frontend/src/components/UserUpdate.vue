@@ -2,8 +2,8 @@
     <h1>Sửa đổi nhân viên</h1>
     <form @submit.prevent="updateAccount" class="form-container">
         <div class="input">
-            <input type="text" v-model="username" id="username" required placeholder="TÀI KHOẢN">
-            <input type="password" v-model="password" id="password" required placeholder="MẬT KHẨU">
+            <input type="text" v-model="username" id="username" required placeholder="TÀI KHOẢN" disabled>
+            <input type="password" v-model="password" id="password" required placeholder="MẬT KHẨU" disabled>
             <input type="text" v-model="role" id="role" required placeholder="VAI TRÒ">
         </div>
         <button type="submit">LƯU</button>

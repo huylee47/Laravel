@@ -1,4 +1,15 @@
 import axios from '../axios';
+import apiClient from './api.js';
+
+export const fetchProfile = async () => {
+    try {
+        const response = await apiClient.get('api/user/profile');
+        return response.data;
+    } catch (error) {
+        console.error('Đã xảy ra sự cố với thao tác tìm nạp:', error);
+        throw error;
+    }
+};
 
 export const authService = {
     login(username, password) {
@@ -16,7 +27,7 @@ export const authService = {
                 localStorage.setItem('user', JSON.stringify({ role }));
                 return response;
             });
-    }
+    },
 };
 
 export function isAuthenticated() {
