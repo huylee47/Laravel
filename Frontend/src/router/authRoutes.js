@@ -10,7 +10,8 @@ const authRoutes = [
         path: '/logout',
         name: 'Logout',
         beforeEnter: (to, from, next) => {
-            localStorage.removeItem('authToken');
+            localStorage.clear();
+            // localStorage.removeItem('authToken');
             next('/login');
         }
     }
