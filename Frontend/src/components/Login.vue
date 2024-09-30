@@ -28,13 +28,16 @@ export default {
           const token = response.data.token;
           const role = response.data.role;
           localStorage.setItem('token', token);
-          console.log('Token:', token, 'Role:', role);
+          // console.log('Token:', token, 'Role:', role);
           this.$store.dispatch('login', response.data.user);
           this.$router.push('/dashboard');
         })
         .catch(error => {
-          console.error('Đăng nhập thất bại:', error);
-          alert(error);
+          if (error.response && error.response.status === 401) {
+            alert('Tên đăng nhập hoặc mật khẩu không chính xác.');
+          } else {
+            alert('Đã xảy ra lỗi, vui lòng thử lại sau.');
+          }
         });
     }
   }
