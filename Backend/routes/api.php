@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Http\Request;
@@ -15,6 +16,7 @@ Route::get('/', function () {
         Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     });
 Route::prefix('/')->middleware(['auth:sanctum', 'abilities:admin'])->group(function () {
+    Route::get('/',[IndexController::class, 'count']);
     Route::prefix('/account')->group(function () {
         Route::get('/list', [AccountController::class, 'indexAccount'])->name('admin.Account.index');
         Route::post('/create', [AccountController::class, 'createAccount'])->name('admin.Account.create');
