@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import axios from '../axios';
+import { authService } from '../services/authService';
 
 export default {
   data() {
@@ -23,27 +23,20 @@ export default {
   },
   methods: {
     login() {
-      if (!this.username || !this.password) {
-        alert('Vui lòng điền vào cả hai trường.');
-        return;
-      }
-      axios.post('http://127.0.0.1:8000/api/Auth/login', {
-        username: this.username,
-        password: this.password,
-        _token: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-      }).then(response => {
-        const token = response.data.token;
-        const role = response.data.role;
-        localStorage.setItem('token', token);
-        console.log('Token:', token, 'Role:', role);
-        this.$store.dispatch('login', response.data.user);
-        this.$router.push('/dashboard');
-      }).catch(error => {
-        console.error('Login failed:', error);
-        alert('Đăng nhập không thành công. Vui lòng kiểm tra thông tin đăng nhập của bạn.');
-      });
+      authService.login(this.username, this.password)
+        .then(response => {
+          const token = response.data.token;
+          const role = response.data.role;
+          localStorage.setItem('token', token);
+          console.log('Token:', token, 'Role:', role);
+          this.$store.dispatch('login', response.data.user);
+          this.$router.push('/dashboard');
+        })
+        .catch(error => {
+          console.error('Đăng nhập thất bại:', error);
+          alert(error);
+        });
     }
   }
-
 };
 </script>

@@ -2,10 +2,10 @@
   <nav>
     <i class='bx bx-menu toggle-sidebar'></i>
     <form action="#">
-      <div class="form-group">
+      <!-- <div class="form-group">
         <input type="text" placeholder="Tìm kiếm...">
         <i class='bx bx-search icon'></i>
-      </div>
+      </div> -->
     </form>
     <a href="#" class="nav-link">
       <i class='bx bxs-bell icon'></i>

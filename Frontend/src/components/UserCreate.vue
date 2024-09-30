@@ -34,7 +34,8 @@ export default {
                 await createUser(userData);
                 this.$router.push('/users');
             } catch (error) {
-                console.error('Không tạo được tài khoản:', error);
+                alert('Không có quyền truy cập hoặc xảy ra lỗi tạo mới người dùng !');
+                this.$router.push('/users');
             }
         },
     },

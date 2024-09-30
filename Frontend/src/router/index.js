@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { isAuthenticated } from '../utils/auth';
+import { isAuthenticated } from '../services/authService';
 import authRoutes from './authRoutes';
 import userRoutes from './userRoutes';
 import blogRoutes from './blogRoutes';
